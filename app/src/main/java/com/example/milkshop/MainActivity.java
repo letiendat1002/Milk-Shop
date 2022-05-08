@@ -12,7 +12,6 @@ import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity {
     Toolbar toolbar;
-    ViewFlipper viewFlipper;
     RecyclerView recyclerViewHome;
     NavigationView navigationView;
     ListView listViewHome;
@@ -27,7 +26,6 @@ public class MainActivity extends AppCompatActivity {
 
     private void addControls() {
         toolbar = findViewById(R.id.toolbarhome);
-        viewFlipper = findViewById(R.id.viewFlipper);
         recyclerViewHome = findViewById(R.id.recycleview);
         navigationView = findViewById(R.id.navigationview);
         listViewHome = findViewById(R.id.listviewhome);
