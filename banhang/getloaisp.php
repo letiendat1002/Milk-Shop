@@ -11,6 +11,12 @@
             'success' => true,
             'message' => "thanh cong",
             'result' => $result
+        ];  
+    }else{
+        $arr =[
+            'success' => false,
+            'message' => "khong thanh cong",
+            'result'=> $result
         ];
     }
     print_r(json_encode($arr));

@@ -7,6 +7,10 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.Network;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.Animation;
@@ -16,8 +20,6 @@ import android.widget.ListView;
 import android.widget.ViewFlipper;
 
 import com.bumptech.glide.Glide;
-//import com.example.milkshop.adapter.LoaiSpAdapter;
-//import com.example.milkshop.model.activity.LoaiSp;
 import com.example.milkshop.adapter.LoaiSpAdapter;
 import com.example.milkshop.model.activity.LoaiSp;
 import com.google.android.material.navigation.NavigationView;
@@ -80,18 +82,26 @@ public class MainActivity extends AppCompatActivity {
         toolbar = findViewById(R.id.toolbarhome);
         recyclerViewHome = findViewById(R.id.recycleview);
         navigationView = findViewById(R.id.navigationview);
-         listViewHome = findViewById(R.id.listviewhome);
+        listViewHome = findViewById(R.id.listviewhome);
         drawerLayout = findViewById(R.id.drawerlayout);
+        viewFlipper =findViewById(R.id.viewFlipper);
+
 
         //khoi tao List
         mangloaisp = new ArrayList<>();
 
 
 
-//        khoi tao adapter
+        //khoi tao adapter
         loaiSpAdapter = new LoaiSpAdapter(getApplicationContext(),mangloaisp);
         listViewHome.setAdapter(loaiSpAdapter);
     }
+
+//    private boolean isConnected(Context context){
+//        ConnectivityManager connectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE);
+//        NetworkInfo wifi = connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI)
+//
+//    }
 
     private void addEvents() {
     }
