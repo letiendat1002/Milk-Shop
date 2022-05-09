@@ -60,7 +60,11 @@ public class MainActivity extends AppCompatActivity {
             getLoaiSanPham();
         }
         else{
-            Toast.makeText(getApplicationContext(), "khong co internet", Toast.LENGTH_LONG).show();
+            Toast.makeText(
+                    getApplicationContext(),
+                    "No Internet Connection On This Device",
+                    Toast.LENGTH_LONG
+            ).show();
         }
     }
 
@@ -71,11 +75,9 @@ public class MainActivity extends AppCompatActivity {
         .subscribe(
                 loaiSpModel -> {
                     if (loaiSpModel.isSuccess()){
-                        Toast.makeText(
-                                getApplicationContext(),
-                                loaiSpModel.getResult().get(0).getTensanpham(),
-                                Toast.LENGTH_SHORT
-                        ).show();
+                        mangloaisp = loaiSpModel.getResult();
+                        loaiSpAdapter = new LoaiSpAdapter(getApplicationContext(), mangloaisp);
+                        listViewHome.setAdapter(loaiSpAdapter);
                     }
                 }
         ));
@@ -116,9 +118,6 @@ public class MainActivity extends AppCompatActivity {
         viewFlipper = findViewById(R.id.viewFlipper);
         // Khoi tao list
         mangloaisp = new ArrayList<>();
-        // Khoi tao adapter
-        loaiSpAdapter = new LoaiSpAdapter(getApplicationContext(), mangloaisp);
-        listViewHome.setAdapter(loaiSpAdapter);
     }
 
     // Kiem tra thiet bi co ket noi internet khong? Wifi + Mobile data
@@ -131,6 +130,12 @@ public class MainActivity extends AppCompatActivity {
             activeNetwork = connectivityManager.getActiveNetworkInfo();
         }
         return activeNetwork != null;
+    }
+
+    @Override
+    protected void onDestroy() {
+        compositeDisposable.clear();
+        super.onDestroy();
     }
 
     private void addEvents() {

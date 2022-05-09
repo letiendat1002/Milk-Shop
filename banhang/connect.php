@@ -1,4 +1,8 @@
-<?php 
-    $conn = mysqli_connect('localhost',  'root', '', 'dataonline');
-    mysqli_set_charset($conn,'utf8');
+<?php
+    $host = "localhost";
+    $user = "root";
+    $pass = "";
+    $database = "dataonline";
+    $conn = mysqli_connect($host,  $user, $pass, $database);
+    mysqli_set_charset($conn, 'utf8');
 ?>
