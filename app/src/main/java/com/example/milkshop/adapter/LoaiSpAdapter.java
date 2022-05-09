@@ -1,8 +1,6 @@
 package com.example.milkshop.adapter;
 
 import android.content.Context;
-import android.text.Layout;
-import android.view.InflateException;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,20 +8,17 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.lifecycle.GenericLifecycleObserver;
-
 import com.bumptech.glide.Glide;
 import com.example.milkshop.R;
-import com.example.milkshop.model.activity.LoaiSp;
+import com.example.milkshop.model.LoaiSp;
 
 import java.util.List;
-import java.util.zip.Inflater;
 
 public class LoaiSpAdapter extends BaseAdapter {
     List<LoaiSp> array;
     Context context;
 
-    public LoaiSpAdapter(Context context,List<LoaiSp> array) {
+    public LoaiSpAdapter(Context context, List<LoaiSp> array) {
         this.array = array;
         this.context = context;
     }
@@ -51,13 +46,12 @@ public class LoaiSpAdapter extends BaseAdapter {
     public View getView(int i, View view, ViewGroup viewGroup) {
         ViewHolder viewHolder = null;
         if (view == null){
-            viewHolder = new viewHolder;
+            viewHolder = new ViewHolder();
             LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            view = layoutInflater.inflate(R.layout.item_sanpham);
+            view = layoutInflater.inflate(R.layout.item_sanpham, null);
             viewHolder.textensp = view.findViewById(R.id.item_tensp);
             viewHolder.imghinhanh = view.findViewById(R.id.item_image);
             view.setTag(viewHolder);
-
         }
         else {
             viewHolder = (ViewHolder) view.getTag();

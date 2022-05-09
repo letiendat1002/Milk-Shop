@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">MilkShop</string>
+    <string name="imageview">imageview</string>
 </resources>
