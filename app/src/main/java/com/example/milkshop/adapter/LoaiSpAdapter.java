@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import androidx.lifecycle.GenericLifecycleObserver;
 
+import com.bumptech.glide.Glide;
 import com.example.milkshop.R;
 import com.example.milkshop.model.activity.LoaiSp;
 
