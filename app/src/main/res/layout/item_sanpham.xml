@@ -13,9 +13,9 @@
         android:layout_height="35dp"/>
     <TextView
         android:id="@+id/item_tensp"
-        android:textSize="15dp"
+        android:textSize="20dp"
         android:layout_marginLeft="10dp"
-        android:text="Sữa Vinamilk"
+        android:text="Milk"
         android:textColor="@android:color/holo_red_light"
         android:layout_gravity="center"
         android:layout_width="wrap_content"

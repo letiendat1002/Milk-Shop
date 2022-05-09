@@ -19,6 +19,7 @@ import com.bumptech.glide.Glide;
 //import com.example.milkshop.adapter.LoaiSpAdapter;
 //import com.example.milkshop.model.activity.LoaiSp;
 import com.example.milkshop.adapter.LoaiSpAdapter;
+import com.example.milkshop.model.activity.LoaiSp;
 import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
@@ -29,8 +30,8 @@ public class MainActivity extends AppCompatActivity {
     RecyclerView recyclerViewHome;
     NavigationView navigationView;
     ListView listViewHome;
-//    LoaiSpAdapter loaiSpAdapter;
-//    List<LoaiSp> mangloaisp;
+    LoaiSpAdapter loaiSpAdapter;
+    List<LoaiSp> mangloaisp;
     DrawerLayout drawerLayout;
     ViewFlipper viewFlipper;
 
@@ -81,6 +82,10 @@ public class MainActivity extends AppCompatActivity {
         navigationView = findViewById(R.id.navigationview);
          listViewHome = findViewById(R.id.listviewhome);
         drawerLayout = findViewById(R.id.drawerlayout);
+
+        //khoi tao List
+        mangloaisp = new ArrayList<>();
+
 
 
 //        khoi tao adapter
