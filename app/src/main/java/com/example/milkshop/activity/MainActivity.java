@@ -1,11 +1,15 @@
 package com.example.milkshop.activity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.net.Uri;
 import android.os.Bundle;
+import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -176,5 +180,22 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void addEvents() {
+        listViewHome.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                switch (i){
+                    case 0:
+                        break;
+                    case 1:
+                        break;
+                    case 2:
+                        break;
+                    case 3:
+                        String hotline = "tel:" + "19006666";
+                        startActivity(new Intent(Intent.ACTION_DIAL, Uri.parse(hotline)));
+                        break;
+                }
+            }
+        });
     }
 }
