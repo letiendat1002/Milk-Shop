@@ -15,12 +15,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.milkshop.R;
 import com.example.milkshop.adapter.LoaiSpAdapter;
+import com.example.milkshop.adapter.SanPhamAdapter;
 import com.example.milkshop.model.LoaiSp;
+import com.example.milkshop.model.SanPham;
 import com.example.milkshop.retrofit.ApiBanHang;
 import com.example.milkshop.retrofit.RetrofitClient;
 import com.example.milkshop.utils.Utils;
@@ -41,10 +44,14 @@ public class MainActivity extends AppCompatActivity {
     ListView listViewHome;
     DrawerLayout drawerLayout;
     ViewFlipper viewFlipper;
+    // Category
     LoaiSpAdapter loaiSpAdapter;
     List<LoaiSp> mangloaisp;
     CompositeDisposable compositeDisposable = new CompositeDisposable();
     ApiBanHang apiBanHang;
+    // Product
+    List<SanPham> mangsanpham;
+    SanPhamAdapter sanPhamAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,33 +61,57 @@ public class MainActivity extends AppCompatActivity {
         addControls();
         addEvents();
         ActionBar();
-        if (isConnected(this)){
-            Toast.makeText(getApplicationContext(), "ok", Toast.LENGTH_LONG).show();
+        if (isConnected(this)) {
             ActionViewFlipper();
             getLoaiSanPham();
-        }
-        else{
+            getSanPham();
+        } else {
             Toast.makeText(
                     getApplicationContext(),
-                    "No Internet Connection On This Device",
+                    "Thiết bị không có internet. Vui lòng kiểm tra lại!",
                     Toast.LENGTH_LONG
             ).show();
         }
     }
 
+    private void getSanPham() {
+        compositeDisposable.add(apiBanHang.getSanPham()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(
+                        sanPhamModel -> {
+                            if (sanPhamModel.isSuccess()) {
+                                mangsanpham = sanPhamModel.getResult();
+                                sanPhamAdapter = new SanPhamAdapter(getApplicationContext(), mangsanpham);
+                                recyclerViewHome.setAdapter(sanPhamAdapter);
+                            }
+                        },
+                        throwable -> Toast.makeText(
+                                getApplicationContext(),
+                                "Không kết nối được với server\n" + throwable.getMessage(),
+                                Toast.LENGTH_LONG
+                        ).show()
+                ));
+    }
+
     private void getLoaiSanPham() {
         compositeDisposable.add(apiBanHang.getLoaiSp()
-        .subscribeOn(Schedulers.io())
-        .observeOn(AndroidSchedulers.mainThread())
-        .subscribe(
-                loaiSpModel -> {
-                    if (loaiSpModel.isSuccess()){
-                        mangloaisp = loaiSpModel.getResult();
-                        loaiSpAdapter = new LoaiSpAdapter(getApplicationContext(), mangloaisp);
-                        listViewHome.setAdapter(loaiSpAdapter);
-                    }
-                }
-        ));
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(
+                        loaiSpModel -> {
+                            if (loaiSpModel.isSuccess()) {
+                                mangloaisp = loaiSpModel.getResult();
+                                loaiSpAdapter = new LoaiSpAdapter(getApplicationContext(), mangloaisp);
+                                listViewHome.setAdapter(loaiSpAdapter);
+                            }
+                        },
+                        throwable -> Toast.makeText(
+                                getApplicationContext(),
+                                "Không kết nối được với server\n" + throwable.getMessage(),
+                                Toast.LENGTH_LONG
+                        ).show()
+                ));
     }
 
     private void ActionViewFlipper() {
@@ -111,18 +142,24 @@ public class MainActivity extends AppCompatActivity {
 
     private void addControls() {
         toolbar = findViewById(R.id.toolbarhome);
+
         recyclerViewHome = findViewById(R.id.recycleview);
+        RecyclerView.LayoutManager layoutManager = new GridLayoutManager(this, 2);
+        recyclerViewHome.setLayoutManager(layoutManager);
+        recyclerViewHome.setHasFixedSize(true);
+
         navigationView = findViewById(R.id.navigationview);
         listViewHome = findViewById(R.id.listviewhome);
         drawerLayout = findViewById(R.id.drawerlayout);
         viewFlipper = findViewById(R.id.viewFlipper);
         // Khoi tao list
         mangloaisp = new ArrayList<>();
+        mangsanpham = new ArrayList<>();
     }
 
     // Kiem tra thiet bi co ket noi internet khong? Wifi + Mobile data
-    private boolean isConnected (Context context){
-        ConnectivityManager connectivityManager = (ConnectivityManager)  context.getSystemService(
+    private boolean isConnected(Context context) {
+        ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(
                 Context.CONNECTIVITY_SERVICE
         );
         NetworkInfo activeNetwork = null;
