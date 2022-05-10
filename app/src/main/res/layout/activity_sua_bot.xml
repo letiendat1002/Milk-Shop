@@ -5,23 +5,24 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activity.SuaBotActivity">
+
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
-        app:title="Sữa bột"
-        android:background="#A8DCE3"
-        app:layout_constraintStart_toStartOf="parent"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        tools:context=".activity.SuaBotActivity">
-    </androidx.appcompat.widget.Toolbar>
+        android:background="#A8DCE3"
+        app:layout_constraintTop_toTopOf="parent"
+        app:title="Sữa bột"
+        tools:context=".activity.SuaBotActivity" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycleview_suabot"
-        android:layout_marginTop="5dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginEnd="5dp"
-        app:layout_constraintTop_toBottomOf="@id/toolbar"
-        app:layout_constraintBottom_toBottomOf="parent"
         android:layout_width="match_parent"
-        android:layout_height="0dp"/>
+        android:layout_height="0dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

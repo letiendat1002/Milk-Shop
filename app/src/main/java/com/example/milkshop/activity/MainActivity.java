@@ -188,13 +188,19 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(new Intent(getApplicationContext(), MainActivity.class));
                         break;
                     case 1: // Sua Tuoi
-                        startActivity(new Intent(getApplicationContext(), SuaTuoiActivity.class));
+                        Intent suatuoi = new Intent(getApplicationContext(), SuaTuoiActivity.class);
+                        suatuoi.putExtra("loai", 1);
+                        startActivity(suatuoi);
                         break;
                     case 2: // Sua Bot
-                        startActivity(new Intent(getApplicationContext(), SuaBotActivity.class));
+                        Intent suabot = new Intent(getApplicationContext(), SuaBotActivity.class);
+                        suabot.putExtra("loai", 2);
+                        startActivity(suabot);
                         break;
                     case 3: // Sua Dac
-                        startActivity(new Intent(getApplicationContext(), SuaDacActivity.class));
+                        Intent suadac = new Intent(getApplicationContext(), SuaDacActivity.class);
+                        suadac.putExtra("loai", 3);
+                        startActivity(suadac);
                         break;
                     case 4:
                         String hotline = "tel:" + "19006666";
