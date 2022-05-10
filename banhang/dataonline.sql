@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.1.3
 -- https://www.phpmyadmin.net/
 --
--- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th5 10, 2022 lúc 09:15 AM
--- Phiên bản máy phục vụ: 10.4.21-MariaDB
--- Phiên bản PHP: 7.3.31
+-- Host: 127.0.0.1
+-- Generation Time: May 10, 2022 at 04:16 PM
+-- Server version: 10.4.24-MariaDB
+-- PHP Version: 7.4.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Cơ sở dữ liệu: `dataonline`
+-- Database: `dataonline`
 --
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `category`
+-- Table structure for table `category`
 --
 
 CREATE TABLE `category` (
@@ -34,7 +34,7 @@ CREATE TABLE `category` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `category`
+-- Dumping data for table `category`
 --
 
 INSERT INTO `category` (`id`, `tensanpham`, `hinhanh`) VALUES
@@ -47,7 +47,7 @@ INSERT INTO `category` (`id`, `tensanpham`, `hinhanh`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `sanpham`
+-- Table structure for table `sanpham`
 --
 
 CREATE TABLE `sanpham` (
@@ -60,7 +60,7 @@ CREATE TABLE `sanpham` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `sanpham`
+-- Dumping data for table `sanpham`
 --
 
 INSERT INTO `sanpham` (`id`, `tensp`, `giasp`, `hinhanh`, `mota`, `loai`) VALUES
@@ -73,33 +73,33 @@ INSERT INTO `sanpham` (`id`, `tensp`, `giasp`, `hinhanh`, `mota`, `loai`) VALUES
 (7, 'Sữa đặc có đường Ngôi sao Phương Nam Xanh lá lon 380g', '19600', 'https://cdn.tgdd.vn/Products/Images/2526/77411/bhx/sd-nspn-xanh-la-lon-380g-2-org.jpg', 'Kem đặc có đường Ngôi sao Phương Nam xanh lá đậm đà đặc sánh, mang lại hương vị hài hòa, thơm béo, dùng để pha sữa, chấm bánh mì,.. thơm ngon tuyệt vời. Kem đặc có đường Ngôi sao Phương Nam xanh lá lon 380g bí quyết cho món cà phê thơm ngon\r\nLoại sản phẩm: Kem đặc có đường\r\nTrọng lượng: 380g\r\nThành phần: Đường, nước, dầu thực vật, sữa bột , Whey bột,...\r\nHương vị: Ngọt vừa\r\nĐộ đạm: 2.7g/100g\r\nThích hợp: Pha cà phê, xay sinh tố, làm sữa chua, bánh flan...\r\nThương hiệu: Ngôi sao Phương Nam (Việt Nam)\r\nSản xuất: Việt Nam', 3);
 
 --
--- Chỉ mục cho các bảng đã đổ
+-- Indexes for dumped tables
 --
 
 --
--- Chỉ mục cho bảng `category`
+-- Indexes for table `category`
 --
 ALTER TABLE `category`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `sanpham`
+-- Indexes for table `sanpham`
 --
 ALTER TABLE `sanpham`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT cho các bảng đã đổ
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT cho bảng `category`
+-- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
--- AUTO_INCREMENT cho bảng `sanpham`
+-- AUTO_INCREMENT for table `sanpham`
 --
 ALTER TABLE `sanpham`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;

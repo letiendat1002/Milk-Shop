@@ -17,11 +17,11 @@ import com.example.milkshop.model.SanPham;
 import java.text.DecimalFormat;
 import java.util.List;
 
-public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.MyViewHolder> {
+public class PhanLoaiAdapter extends RecyclerView.Adapter<PhanLoaiAdapter.MyViewHolder> {
     Context context;
     List<SanPham> array;
 
-    public SanPhamAdapter(Context context, List<SanPham> array) {
+    public PhanLoaiAdapter(Context context, List<SanPham> array) {
         this.context = context;
         this.array = array;
     }
@@ -29,22 +29,24 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.MyViewHo
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View item = LayoutInflater.from(parent.getContext()).inflate(
-                R.layout.item_sanpham,
+        View view = LayoutInflater.from(parent.getContext()).inflate(
+                R.layout.item_phanloai,
                 parent,
                 false
         );
-        return new MyViewHolder(item);
+        return new MyViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         SanPham sanPham = array.get(position);
-        holder.txtTen.setText(sanPham.getTensp());
+        holder.tensp.setText(sanPham.getTensp());
         DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
         String price = decimalFormat.format(Double.parseDouble(sanPham.getGiasp())) + "đ";
-        holder.txtGia.setText(price);
-        Glide.with(context).load(sanPham.getHinhanh()).into(holder.imgHinhAnh);
+        holder.giasp.setText(price);
+        holder.mota.setText(sanPham.getMota());
+        Glide.with(context).load(sanPham.getHinhanh()).into(holder.hinhanh);
+
     }
 
     @Override
@@ -52,15 +54,17 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.MyViewHo
         return array.size();
     }
 
+
     public static class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView txtGia, txtTen;
-        ImageView imgHinhAnh;
+        TextView tensp, giasp, mota;
+        ImageView hinhanh;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            txtGia = itemView.findViewById(R.id.itemsp_gia);
-            txtTen = itemView.findViewById(R.id.itemsp_ten);
-            imgHinhAnh = itemView.findViewById(R.id.itemsp_image);
+            tensp = itemView.findViewById(R.id.itemphanloai_ten);
+            giasp = itemView.findViewById(R.id.itemphanloai_gia);
+            mota = itemView.findViewById(R.id.itemphanloai_mota);
+            hinhanh = itemView.findViewById(R.id.itemphanloai_image);
         }
     }
 }
