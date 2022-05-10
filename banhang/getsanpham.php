@@ -1,6 +1,6 @@
 <?php
     include "connect.php";
-    $query = "SELECT * FROM `category`";
+    $query = "SELECT * FROM `sanpham` ORDER BY loai ASC";
     $data = mysqli_query($conn, $query);
     $result = array();
     while ($row = mysqli_fetch_assoc($data)){

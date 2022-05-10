@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.milkshop" >
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.example.milkshop">
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -10,11 +12,21 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        android:theme="@style/Theme.MilkShop"
         android:usesCleartextTraffic="true"
-        android:theme="@style/Theme.MilkShop" >
+        tools:targetApi="m">
         <activity
-            android:name=".MainActivity"
-            android:exported="true" >
+            android:name=".activity.SuaDacActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.SuaBotActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.SuaTuoiActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.MainActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

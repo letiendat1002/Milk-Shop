@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">MilkShop</string>
+    <string name="imageview">imageview</string>
+    <string name="ten_san_pham">Ten san pham</string>
+    <string name="product_image_content">product image</string>
+    <string name="gia_text">gia: 100000d</string>
+    <string name="add_image_content">Add image</string>
+    <string name="product_text">Product</string>
 </resources>

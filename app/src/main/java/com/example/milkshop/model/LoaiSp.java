@@ -1,4 +1,4 @@
-package com.example.milkshop.model.activity;
+package com.example.milkshop.model;
 
 public class LoaiSp {
     int id;
