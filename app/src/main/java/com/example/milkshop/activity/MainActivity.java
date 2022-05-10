@@ -185,12 +185,18 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 switch (i){
                     case 0:
+                        startActivity(new Intent(getApplicationContext(), MainActivity.class));
                         break;
-                    case 1:
+                    case 1: // Sua Tuoi
+                        startActivity(new Intent(getApplicationContext(), SuaTuoiActivity.class));
                         break;
-                    case 2:
+                    case 2: // Sua Bot
+                        startActivity(new Intent(getApplicationContext(), SuaBotActivity.class));
                         break;
-                    case 3:
+                    case 3: // Sua Dac
+                        startActivity(new Intent(getApplicationContext(), SuaDacActivity.class));
+                        break;
+                    case 4:
                         String hotline = "tel:" + "19006666";
                         startActivity(new Intent(Intent.ACTION_DIAL, Uri.parse(hotline)));
                         break;

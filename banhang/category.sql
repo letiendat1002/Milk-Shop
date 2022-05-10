@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 09, 2022 at 05:24 PM
+-- Generation Time: May 10, 2022 at 05:59 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -38,9 +38,11 @@ CREATE TABLE `category` (
 --
 
 INSERT INTO `category` (`id`, `tensanpham`, `hinhanh`) VALUES
-(1, 'Sữa tươi', 'https://tieudung.vn/upload_images/images/2021/12/14/sua-tuoi.jpg'),
-(2, 'Sữa bột', 'https://vcdn-suckhoe.vnecdn.net/2018/01/10/Sua-7790-1515548039.jpg'),
-(3, 'Sữa đặc', 'http://st.suckhoegiadinh.com.vn/StaticFile/Subject/2017/04/21/233942/sua-dac-2_21935215.jpg');
+(1, 'Trang chủ', 'https://ngochieu.name.vn/img/home.png'),
+(2, 'Sữa tươi', 'https://tieudung.vn/upload_images/images/2021/12/14/sua-tuoi.jpg'),
+(3, 'Sữa bột', 'https://5.imimg.com/data5/XZ/XO/XH/SELLER-67095120/amul-milk-powder-500x500.jpg'),
+(4, 'Sữa đặc', 'https://static.toiimg.com/thumb/53222548.cms?imgsize=214293&width=800&height=800'),
+(5, 'Liên hệ', 'https://ngochieu.name.vn/img/contact.png');
 
 --
 -- Indexes for dumped tables
@@ -60,7 +62,7 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
