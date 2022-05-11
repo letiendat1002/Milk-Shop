@@ -48,13 +48,13 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.MyViewHo
         String price = decimalFormat.format(Double.parseDouble(sanPham.getGiasp())) + "đ";
         holder.txtGia.setText(price);
         Glide.with(context).load(sanPham.getHinhanh()).into(holder.imgHinhAnh);
-        //add code bat event click Home
+
         holder.setItemClickListener(new ItemClickListener() {
             @Override
             public void onClick(View view, int pos, boolean isLongClick) {
-                if(!isLongClick){
+                if (!isLongClick) {
                     Intent intent = new Intent(context, ChiTietActivity.class);
-                    intent.putExtra("chitiet",sanPham); //code goi chi tiet va chuyen qua activity chi tiet san pham
+                    intent.putExtra("chitiet", sanPham);
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     context.startActivity(intent);
                 }
@@ -77,21 +77,16 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.MyViewHo
             txtGia = itemView.findViewById(R.id.itemsp_gia);
             txtTen = itemView.findViewById(R.id.itemsp_ten);
             imgHinhAnh = itemView.findViewById(R.id.itemsp_image);
-            itemView.setOnClickListener(this);//code bat event sp Home
-
+            itemView.setOnClickListener(this);
         }
 
-
-        //Start bat event clik sp home
         public void setItemClickListener(ItemClickListener itemClickListener) {
             this.itemClickListener = itemClickListener;
         }
 
         @Override
         public void onClick(View view) {
-            itemClickListener.onClick(view , getAdapterPosition() ,false);
+            itemClickListener.onClick(view, getAdapterPosition(), false);
         }
-
-        //End
     }
 }

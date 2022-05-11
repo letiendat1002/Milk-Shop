@@ -22,12 +22,10 @@ import com.nex3z.notificationbadge.NotificationBadge;
 import java.text.DecimalFormat;
 import java.util.Objects;
 
-import okhttp3.internal.Util;
-
 public class ChiTietActivity extends AppCompatActivity {
     TextView tensp ,giasp, mota;
-    Button btnthem;
-    ImageView imghinhanh;
+    Button btnThem;
+    ImageView imgHinhAnh;
     Spinner spinner;
     Toolbar toolbar;
     SanPham sanPham;
@@ -39,36 +37,72 @@ public class ChiTietActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chi_tiet);
-        initView();
+        addControls();
         ActionToolBar();
-        IntiData();
-        intiControl();
+        addData();
+        addEvents();
     }
 
-    private void intiControl() {
-        btnthem.setOnClickListener(new View.OnClickListener() {
+    private void addControls() {
+        tensp = findViewById(R.id.txttensp);
+        giasp = findViewById(R.id.txtgiasp);
+        mota = findViewById(R.id.txtmotachitiet);
+        spinner = findViewById(R.id.spinner);
+        btnThem = findViewById(R.id.btnAddToCart);
+        imgHinhAnh = findViewById(R.id.imgchitiet);
+        toolbar = findViewById(R.id.toolbar);
+        badge = findViewById(R.id.menu_sl);
+    }
+
+    private void ActionToolBar() {
+        setSupportActionBar(toolbar);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+        toolbar.setNavigationOnClickListener(view -> finish());
+    }
+
+    private void addData() {
+        if(Utils.manggiohang != null){
+            badge.setText(String.valueOf(Utils.manggiohang.size()));
+        }
+        sanPham = (SanPham) getIntent().getSerializableExtra("chitiet");
+        tensp.setText(sanPham.getTensp().trim());
+        mota.setText(sanPham.getMota().trim());
+        Glide.with(getApplicationContext()).load(sanPham.getHinhanh()).into(imgHinhAnh);
+        DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
+        String price = decimalFormat.format(Double.parseDouble(sanPham.getGiasp())) + "đ";
+        giasp.setText(price);
+        Integer[] itemSpinner = new Integer[]{1,2,3,4,5,6,7,8,9,10};
+        ArrayAdapter<Integer> spinnerAdapter =  new ArrayAdapter<>(
+                this,
+                androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,
+                itemSpinner
+        );
+        spinner.setAdapter(spinnerAdapter);
+    }
+
+    private void addEvents() {
+        btnThem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 themGioHang();
-
             }
         });
     }
 
-
     private void themGioHang() {
-        if(Utils.manggiohang.size()>0){
+        if(Utils.manggiohang.size() > 0){
             boolean flag = false;
-            int soluong =Integer.parseInt(spinner.getSelectedItem().toString());
-            for(int i = 0 ;i<Utils.manggiohang.size();i++){
-                if(Utils.manggiohang.get(i).getIdsp()== sanPham.getId()){
-                    Utils.manggiohang.get(i).setSoluong(soluong+Utils.manggiohang.get(i).getSoluong());
+            int soluong = Integer.parseInt(spinner.getSelectedItem().toString());
+            for(int i = 0; i < Utils.manggiohang.size(); i++){
+                if(Utils.manggiohang.get(i).getIdsp() == sanPham.getId())
+                {
+                    Utils.manggiohang.get(i).setSoluong(soluong + Utils.manggiohang.get(i).getSoluong());
                     long gia = Long.parseLong(sanPham.getGiasp())* Utils.manggiohang.get(i).getSoluong();
                     Utils.manggiohang.get(i).setGiasp(gia);
                     flag=true;
                 }
             }
-            if(flag ==false){
+            if(!flag){
                 long gia = Long.parseLong(sanPham.getGiasp())*soluong;
                 GioHang gioHang = new GioHang();
                 gioHang.setGiasp(gia);
@@ -81,57 +115,19 @@ public class ChiTietActivity extends AppCompatActivity {
 
             }
 
-        }else{
+        }
+        else{
             int soluong = Integer.parseInt(spinner.getSelectedItem().toString());
-            long gia = Long.parseLong(sanPham.getGiasp())*soluong;
+            long gia = Long.parseLong(sanPham.getGiasp()) * soluong;
             GioHang gioHang = new GioHang();
             gioHang.setGiasp(gia);
             gioHang.setSoluong(soluong);
-            gioHang.setGiasp(gia);
             gioHang.setIdsp(sanPham.getId());
             gioHang.setTensp(sanPham.getTensp());
             gioHang.setHinhsp(sanPham.getHinhanh());
             Utils.manggiohang.add(gioHang);
-
         }
         badge.setText(String.valueOf(Utils.manggiohang.size()));
-    }
-
-    private void IntiData() {
-        SanPham sanPham = (SanPham) getIntent().getSerializableExtra("chitiet");
-        tensp.setText(sanPham.getTensp());
-        mota.setText(sanPham.getMota());
-        Glide.with(getApplicationContext()).load(sanPham.getHinhanh()).into(imghinhanh);
-        DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
-        giasp.setText("Giá :" +decimalFormat.format(Double.parseDouble(sanPham.getGiasp())) + "đ");
-        Integer[] so = new Integer[]{1,2,3,4,5,6,7,8,9,10};
-        ArrayAdapter<Integer> adapterspin =  new ArrayAdapter<>(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,so);
-        spinner.setAdapter(adapterspin);
-    }
-
-    private void initView() {
-        tensp = findViewById(R.id.txttensp);
-        giasp = findViewById(R.id.txtgiasp);
-        mota = findViewById(R.id.txtmotachitiet);
-        spinner = findViewById(R.id.spinner);
-        btnthem = findViewById(R.id.btnthemvaogiohang);
-        imghinhanh = findViewById(R.id.imgchitiet);
-        toolbar = findViewById(R.id.toolbar);
-        badge =findViewById(R.id.menu_sl);
-        if(Utils.manggiohang != null){
-            badge.setText(String.valueOf(Utils.manggiohang.size()));
-        }
-    }
-
-    private void ActionToolBar() {
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-//        toolbar.setNavigationContentDescription(new View.OnClickListener(){
-//            @Override
-//            public void onClick(View view) {
-//                finish();
-//            }
-//        };
     }
 
     @Override

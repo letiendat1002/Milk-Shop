@@ -159,7 +159,7 @@ public class MainActivity extends AppCompatActivity {
         // Khoi tao list
         mangloaisp = new ArrayList<>();
         mangsanpham = new ArrayList<>();
-        if(Utils.manggiohang ==null){
+        if(Utils.manggiohang == null){
             Utils.manggiohang = new ArrayList<>();
         }
     }

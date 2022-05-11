@@ -66,9 +66,9 @@ public class PhanLoaiAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
             myViewHolder.setItemClickListener(new ItemClickListener() {
                 @Override
                 public void onClick(View view, int pos, boolean isLongClick) {
-                    if(!isLongClick){
+                    if (!isLongClick) {
                         Intent intent = new Intent(context, ChiTietActivity.class);
-                        intent.putExtra("chitiet",sanPham); //codo goi chi tiet va chuyen qua activity chi tiet san pham
+                        intent.putExtra("chitiet", sanPham);
                         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         context.startActivity(intent);
                     }
@@ -104,6 +104,7 @@ public class PhanLoaiAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         TextView tensp, giasp, mota;
         ImageView hinhanh;
         private ItemClickListener itemClickListener;
+
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             tensp = itemView.findViewById(R.id.itemphanloai_ten);

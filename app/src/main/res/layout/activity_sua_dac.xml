@@ -25,23 +25,4 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/toolbar" />
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="#A8DCE3"
-        app:layout_constraintTop_toTopOf="parent"
-        app:title="Sữa đặc"
-        tools:context=".activity.SuaDacActivity" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycleview_suadac"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="5dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/toolbar" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>
