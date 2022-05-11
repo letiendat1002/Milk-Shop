@@ -22,7 +22,7 @@
         android:layout_gravity="center"
         android:layout_marginStart="10dp"
         android:text="@string/product_text"
-        android:textColor="@android:color/holo_red_light"
+        android:textColor="@color/black"
         android:textSize="20sp" />
 
 </LinearLayout>

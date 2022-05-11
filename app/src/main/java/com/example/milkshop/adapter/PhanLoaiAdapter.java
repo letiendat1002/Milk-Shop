@@ -61,13 +61,12 @@ public class PhanLoaiAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
             DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
             String price = decimalFormat.format(Double.parseDouble(sanPham.getGiasp())) + "đ";
             myViewHolder.giasp.setText(price);
-            myViewHolder.mota.setText(sanPham.getMota());
+            myViewHolder.mota.setText(sanPham.getMota().trim());
             Glide.with(context).load(sanPham.getHinhanh()).into(myViewHolder.hinhanh);
             myViewHolder.setItemClickListener(new ItemClickListener() {
                 @Override
                 public void onClick(View view, int pos, boolean isLongClick) {
                     if(!isLongClick){
-                        //click
                         Intent intent = new Intent(context, ChiTietActivity.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         context.startActivity(intent);

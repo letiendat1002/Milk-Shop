@@ -153,7 +153,7 @@ public class PhanLoaiActivity extends AppCompatActivity {
             @Override
             public void run() {
                 mangsanpham.remove(mangsanpham.size() - 1);
-                phanLoaiAdapter.notifyItemRemoved(mangsanpham.size());
+                phanLoaiAdapter.notifyItemRemoved(mangsanpham.size() - 1);
                 page += 1;
                 getData(page);
                 phanLoaiAdapter.notifyDataSetChanged();
