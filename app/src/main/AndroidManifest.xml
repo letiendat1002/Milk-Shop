@@ -16,6 +16,9 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
         <activity
+            android:name=".activity.ChiTietActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.PhanLoaiActivity"
             android:exported="false" />
         <activity
