@@ -7,5 +7,8 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="hogo_red_light">#D52323</color>
+    <color name="purple_price">#563085</color>
+    <color name="dark_blue">#89abc6</color>
+    <color name="primary_blue">#e3f2fd</color>
+
 </resources>

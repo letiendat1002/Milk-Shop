@@ -2,7 +2,7 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="150dp"
     android:layout_margin="5dp"
     android:elevation="8dp"
     app:cardCornerRadius="5dp">
@@ -18,7 +18,9 @@
             android:id="@+id/itemphanloai_image"
             android:layout_width="0dp"
             android:layout_height="100dp"
+            android:layout_gravity="center"
             android:layout_weight="3"
+            android:contentDescription="@string/add_image_content"
             android:src="@drawable/ic_media_24" />
 
         <LinearLayout
@@ -31,25 +33,36 @@
                 android:id="@+id/itemphanloai_ten"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="Tên sản phẩm"
+                android:ellipsize="end"
+                android:layout_marginStart="5dp"
+                android:textColor="@color/black"
+                android:maxLines="2"
+                android:text="@string/ten_san_pham"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/itemphanloai_gia"
+                android:layout_marginStart="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Giá: 25000đ"
-                android:textColor="@android:color/holo_red_light"
-                android:textSize="16sp" />
+                android:layout_marginTop="7dp"
+                android:textStyle="bold"
+                android:text="@string/gia_text"
+                android:textColor="@color/purple_price"
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/itemphanloai_mota"
                 android:layout_width="match_parent"
+                android:layout_marginStart="5dp"
                 android:layout_height="wrap_content"
-                android:text="Mô tả:"
-                android:textSize="14sp" />
+                android:layout_marginTop="5dp"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:text="@string/mota_text"
+                android:textColor="@color/black"
+                android:textSize="17sp" />
 
         </LinearLayout>
 

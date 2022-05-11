@@ -183,22 +183,22 @@ public class MainActivity extends AppCompatActivity {
         listViewHome.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                switch (i){
+                switch (i) {
                     case 0:
                         startActivity(new Intent(getApplicationContext(), MainActivity.class));
                         break;
                     case 1: // Sua Tuoi
-                        Intent suatuoi = new Intent(getApplicationContext(), SuaTuoiActivity.class);
+                        Intent suatuoi = new Intent(getApplicationContext(), PhanLoaiActivity.class);
                         suatuoi.putExtra("loai", 1);
                         startActivity(suatuoi);
                         break;
                     case 2: // Sua Bot
-                        Intent suabot = new Intent(getApplicationContext(), SuaBotActivity.class);
+                        Intent suabot = new Intent(getApplicationContext(), PhanLoaiActivity.class);
                         suabot.putExtra("loai", 2);
                         startActivity(suabot);
                         break;
                     case 3: // Sua Dac
-                        Intent suadac = new Intent(getApplicationContext(), SuaDacActivity.class);
+                        Intent suadac = new Intent(getApplicationContext(), PhanLoaiActivity.class);
                         suadac.putExtra("loai", 3);
                         startActivity(suadac);
                         break;

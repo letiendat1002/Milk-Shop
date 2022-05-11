@@ -16,13 +16,10 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
         <activity
-            android:name=".activity.SuaDacActivity"
+            android:name=".activity.ChiTietActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.SuaBotActivity"
-            android:exported="false" />
-        <activity
-            android:name=".activity.SuaTuoiActivity"
+            android:name=".activity.PhanLoaiActivity"
             android:exported="false" />
         <activity
             android:name=".activity.MainActivity"

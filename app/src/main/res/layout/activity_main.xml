@@ -20,8 +20,8 @@
                 android:id="@+id/toolbarhome"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                android:background="#ff08dfff"
-                app:title="Home" />
+                android:background="@color/primary_blue"
+                app:title="Trang chủ" />
 
             <ViewFlipper
                 android:id="@+id/viewFlipper"
@@ -31,24 +31,23 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="#5992d2"
+                android:background="@color/white"
                 android:orientation="vertical">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="10dp"
                     android:text="@string/product_text"
-                    android:textColor="@android:color/holo_red_light"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
+                    android:textColor="@color/black"
+                    android:textSize="22sp" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recycleview"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginStart="5dp"
-                    android:layout_marginTop="10dp" />
+                    android:layout_marginStart="5dp" />
             </LinearLayout>
 
         </LinearLayout>
@@ -61,9 +60,9 @@
 
             <ListView
                 android:id="@+id/listviewhome"
-                android:layout_marginTop="10dp"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp" />
 
         </com.google.android.material.navigation.NavigationView>
     </androidx.drawerlayout.widget.DrawerLayout>

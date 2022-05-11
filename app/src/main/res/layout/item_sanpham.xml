@@ -30,10 +30,10 @@
                 android:id="@+id/itemsp_gia"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:gravity="center"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="7dp"
                 android:text="@string/gia_text"
-                android:textColor="@android:color/holo_red_light"
+                android:textColor="@color/purple_price"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
@@ -41,13 +41,13 @@
                 android:id="@+id/itemsp_ten"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
                 android:layout_marginTop="5dp"
                 android:ellipsize="end"
-                android:gravity="center"
-                android:maxLines="3"
+                android:maxLines="2"
                 android:text="@string/ten_san_pham"
-                android:textSize="20sp"
-                android:textStyle="bold" />
+                android:textColor="@color/black"
+                android:textSize="17sp" />
         </LinearLayout>
 
         <ImageView
