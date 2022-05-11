@@ -1,8 +1,5 @@
 package com.example.milkshop.activity;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -11,6 +8,8 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.bumptech.glide.Glide;
 import com.example.milkshop.R;
@@ -23,14 +22,13 @@ import java.text.DecimalFormat;
 import java.util.Objects;
 
 public class ChiTietActivity extends AppCompatActivity {
-    TextView tensp ,giasp, mota;
+    TextView tensp, giasp, mota;
     Button btnThem;
     ImageView imgHinhAnh;
     Spinner spinner;
     Toolbar toolbar;
     SanPham sanPham;
     NotificationBadge badge;
-
 
 
     @Override
@@ -61,7 +59,7 @@ public class ChiTietActivity extends AppCompatActivity {
     }
 
     private void addData() {
-        if(Utils.manggiohang != null){
+        if (Utils.manggiohang != null) {
             badge.setText(String.valueOf(Utils.manggiohang.size()));
         }
         sanPham = (SanPham) getIntent().getSerializableExtra("chitiet");
@@ -71,8 +69,8 @@ public class ChiTietActivity extends AppCompatActivity {
         DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
         String price = decimalFormat.format(Double.parseDouble(sanPham.getGiasp())) + "đ";
         giasp.setText(price);
-        Integer[] itemSpinner = new Integer[]{1,2,3,4,5,6,7,8,9,10};
-        ArrayAdapter<Integer> spinnerAdapter =  new ArrayAdapter<>(
+        Integer[] itemSpinner = new Integer[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+        ArrayAdapter<Integer> spinnerAdapter = new ArrayAdapter<>(
                 this,
                 androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,
                 itemSpinner
@@ -90,20 +88,19 @@ public class ChiTietActivity extends AppCompatActivity {
     }
 
     private void themGioHang() {
-        if(Utils.manggiohang.size() > 0){
+        if (Utils.manggiohang.size() > 0) {
             boolean flag = false;
             int soluong = Integer.parseInt(spinner.getSelectedItem().toString());
-            for(int i = 0; i < Utils.manggiohang.size(); i++){
-                if(Utils.manggiohang.get(i).getIdsp() == sanPham.getId())
-                {
+            for (int i = 0; i < Utils.manggiohang.size(); i++) {
+                if (Utils.manggiohang.get(i).getIdsp() == sanPham.getId()) {
                     Utils.manggiohang.get(i).setSoluong(soluong + Utils.manggiohang.get(i).getSoluong());
-                    long gia = Long.parseLong(sanPham.getGiasp())* Utils.manggiohang.get(i).getSoluong();
+                    long gia = Long.parseLong(sanPham.getGiasp()) * Utils.manggiohang.get(i).getSoluong();
                     Utils.manggiohang.get(i).setGiasp(gia);
-                    flag=true;
+                    flag = true;
                 }
             }
-            if(!flag){
-                long gia = Long.parseLong(sanPham.getGiasp())*soluong;
+            if (!flag) {
+                long gia = Long.parseLong(sanPham.getGiasp()) * soluong;
                 GioHang gioHang = new GioHang();
                 gioHang.setGiasp(gia);
                 gioHang.setSoluong(soluong);
@@ -115,8 +112,7 @@ public class ChiTietActivity extends AppCompatActivity {
 
             }
 
-        }
-        else{
+        } else {
             int soluong = Integer.parseInt(spinner.getSelectedItem().toString());
             long gia = Long.parseLong(sanPham.getGiasp()) * soluong;
             GioHang gioHang = new GioHang();
