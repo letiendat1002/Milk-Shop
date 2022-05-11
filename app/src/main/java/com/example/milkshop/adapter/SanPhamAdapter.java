@@ -1,6 +1,7 @@
 package com.example.milkshop.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,7 +12,9 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.milkshop.Interface.ItemClickListener;
 import com.example.milkshop.R;
+import com.example.milkshop.activity.ChiTietActivity;
 import com.example.milkshop.model.SanPham;
 
 import java.text.DecimalFormat;
@@ -45,6 +48,18 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.MyViewHo
         String price = decimalFormat.format(Double.parseDouble(sanPham.getGiasp())) + "đ";
         holder.txtGia.setText(price);
         Glide.with(context).load(sanPham.getHinhanh()).into(holder.imgHinhAnh);
+        //add code bat event click Home
+        holder.setItemClickListener(new ItemClickListener() {
+            @Override
+            public void onClick(View view, int pos, boolean isLongClick) {
+                if(!isLongClick){
+                    Intent intent = new Intent(context, ChiTietActivity.class);
+                    intent.putExtra("chitiet",sanPham); //code goi chi tiet va chuyen qua activity chi tiet san pham
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    context.startActivity(intent);
+                }
+            }
+        });
     }
 
     @Override
@@ -52,15 +67,31 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.MyViewHo
         return array.size();
     }
 
-    public static class MyViewHolder extends RecyclerView.ViewHolder {
+    public static class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView txtGia, txtTen;
         ImageView imgHinhAnh;
+        private ItemClickListener itemClickListener;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             txtGia = itemView.findViewById(R.id.itemsp_gia);
             txtTen = itemView.findViewById(R.id.itemsp_ten);
             imgHinhAnh = itemView.findViewById(R.id.itemsp_image);
+            itemView.setOnClickListener(this);//code bat event sp Home
+
         }
+
+
+        //Start bat event clik sp home
+        public void setItemClickListener(ItemClickListener itemClickListener) {
+            this.itemClickListener = itemClickListener;
+        }
+
+        @Override
+        public void onClick(View view) {
+            itemClickListener.onClick(view , getAdapterPosition() ,false);
+        }
+
+        //End
     }
 }

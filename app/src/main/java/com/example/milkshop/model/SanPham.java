@@ -1,6 +1,8 @@
 package com.example.milkshop.model;
 
-public class SanPham {
+import java.io.Serializable;
+
+public class SanPham implements Serializable { //them Serializable de sua loi khi them code o trang Phan Loai adpter
     int id;
     String tensp;
     String giasp;

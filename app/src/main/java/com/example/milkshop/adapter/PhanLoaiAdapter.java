@@ -68,6 +68,7 @@ public class PhanLoaiAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                 public void onClick(View view, int pos, boolean isLongClick) {
                     if(!isLongClick){
                         Intent intent = new Intent(context, ChiTietActivity.class);
+                        intent.putExtra("chitiet",sanPham); //codo goi chi tiet va chuyen qua activity chi tiet san pham
                         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         context.startActivity(intent);
                     }

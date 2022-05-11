@@ -159,6 +159,9 @@ public class MainActivity extends AppCompatActivity {
         // Khoi tao list
         mangloaisp = new ArrayList<>();
         mangsanpham = new ArrayList<>();
+        if(Utils.manggiohang ==null){
+            Utils.manggiohang = new ArrayList<>();
+        }
     }
 
     // Kiem tra thiet bi co ket noi internet khong? Wifi + Mobile data
