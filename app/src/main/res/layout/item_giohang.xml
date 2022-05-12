@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:orientation="horizontal"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar">
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_sptheoloai">
 
         <ImageView
             android:id="@+id/item_giohang_hinhanh"
@@ -61,6 +61,7 @@
                 android:layout_marginTop="10dp"
                 android:orientation="horizontal">
 
+
                 <ImageView
                     android:id="@+id/item_giohang_tru"
                     android:layout_width="wrap_content"
@@ -73,7 +74,7 @@
                     android:id="@+id/item_giohang_soluong"
                     android:layout_width="40dp"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/style_textview"
+                    android:background="@drawable/style_amount_textview"
                     android:gravity="center"
                     android:text="@string/so_luong"
                     android:textColor="@color/black"

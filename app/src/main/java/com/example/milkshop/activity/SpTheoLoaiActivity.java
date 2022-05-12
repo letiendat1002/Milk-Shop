@@ -26,8 +26,8 @@ import io.reactivex.rxjava3.disposables.CompositeDisposable;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 
 public class SpTheoLoaiActivity extends AppCompatActivity {
-    Toolbar toolbar;
-    RecyclerView recyclerView;
+    Toolbar toolbarSpTheoLoai;
+    RecyclerView recyclerViewSpTheoLoai;
     CompositeDisposable compositeDisposable;
     ApiBanHang apiBanHang;
     int page;
@@ -55,33 +55,33 @@ public class SpTheoLoaiActivity extends AppCompatActivity {
         switch (loai) {
             case 1:
                 setContentView(R.layout.activity_sua_tuoi);
-                recyclerView = findViewById((R.id.recycleview_suatuoi));
+                recyclerViewSpTheoLoai = findViewById((R.id.recycleview_suatuoi));
                 break;
             case 2:
                 setContentView(R.layout.activity_sua_bot);
-                recyclerView = findViewById((R.id.recycleview_suabot));
+                recyclerViewSpTheoLoai = findViewById((R.id.recycleview_suabot));
                 break;
             case 3:
                 setContentView(R.layout.activity_sua_dac);
-                recyclerView = findViewById((R.id.recycleview_suadac));
+                recyclerViewSpTheoLoai = findViewById((R.id.recycleview_suadac));
                 break;
         }
-        toolbar = findViewById(R.id.toolbar);
+        toolbarSpTheoLoai = findViewById(R.id.toolbar_sptheoloai);
         linearLayoutManager = new LinearLayoutManager(
                 this,
                 LinearLayoutManager.VERTICAL,
                 false);
-        recyclerView.setLayoutManager(linearLayoutManager);
-        recyclerView.setHasFixedSize(true);
+        recyclerViewSpTheoLoai.setLayoutManager(linearLayoutManager);
+        recyclerViewSpTheoLoai.setHasFixedSize(true);
         sanPhamList = new ArrayList<>();
         handler = new Handler();
         isLoading = false;
     }
 
     private void ActionToolBar() {
-        setSupportActionBar(toolbar);
+        setSupportActionBar(toolbarSpTheoLoai);
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
-        toolbar.setNavigationOnClickListener(view -> finish());
+        toolbarSpTheoLoai.setNavigationOnClickListener(view -> finish());
     }
 
     private void getData(int page) {
@@ -94,7 +94,7 @@ public class SpTheoLoaiActivity extends AppCompatActivity {
                                 if (spTheoLoaiAdapter == null) { // Không có data
                                     sanPhamList = sanPhamModel.getResult();
                                     spTheoLoaiAdapter = new SpTheoLoaiAdapter(getApplicationContext(), sanPhamList);
-                                    recyclerView.setAdapter(spTheoLoaiAdapter);
+                                    recyclerViewSpTheoLoai.setAdapter(spTheoLoaiAdapter);
                                 } else { // Đã có data
                                     int pos = sanPhamList.size() - 1;
                                     int addAmount = sanPhamModel.getResult().size();
@@ -120,7 +120,7 @@ public class SpTheoLoaiActivity extends AppCompatActivity {
     }
 
     private void addEvents() {
-        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+        recyclerViewSpTheoLoai.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
                 super.onScrollStateChanged(recyclerView, newState);

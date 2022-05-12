@@ -1,11 +1,12 @@
 package com.example.milkshop.adapter;
 
-import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -13,12 +14,12 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.example.milkshop.Interface.ImageClickListenner;
+import com.example.milkshop.Interface.ImageClickListener;
 import com.example.milkshop.R;
+import com.example.milkshop.model.EventBus.EmptyCartEvent;
 import com.example.milkshop.model.EventBus.TinhTongEvent;
 import com.example.milkshop.model.GioHang;
 import com.example.milkshop.utils.Utils;
-import com.google.gson.annotations.Until;
 
 import org.greenrobot.eventbus.EventBus;
 
@@ -28,6 +29,8 @@ import java.util.List;
 public class GioHangAdapter extends RecyclerView.Adapter<GioHangAdapter.MyViewHolder> {
     Context context;
     List<GioHang> gioHangList;
+    private static final int SUBTRACT = 1;
+    private static final int ADD = 2;
 
     public GioHangAdapter(Context context, List<GioHang> array) {
         this.context = context;
@@ -55,52 +58,67 @@ public class GioHangAdapter extends RecyclerView.Adapter<GioHangAdapter.MyViewHo
         String soluong = gioHang.getSoluong() + "";
         holder.soluong.setText(soluong);
         Glide.with(context).load(gioHang.getHinhanh()).into(holder.hinhanh);
-        holder.setListenner(new ImageClickListenner() {
+        holder.setListener(new ImageClickListener() {
             @Override
-            public void onImageClick(View view, int pos, int giatri) {
-                if (giatri == 1){
-                    if (gioHangList.get(pos).getSoluong()>1){
-                        int soluongmoi = gioHangList.get(pos).getSoluong()-1;
+            public void onImageClick(View view, int pos, int value) {
+                if (value == SUBTRACT){
+                    if (gioHangList.get(pos).getSoluong() > 1){
+                        int soluongmoi = gioHangList.get(pos).getSoluong() - 1;
                         gioHangList.get(pos).setSoluong(soluongmoi);
-
-                        holder.soluong.setText(gioHangList.get(pos).getSoluong()+" ");
-                        long gia = gioHangList.get(pos).getSoluong()*gioHangList.get(pos).getGiasp();
+                        String amount = gioHangList.get(pos).getSoluong() + "";
+                        holder.soluong.setText(amount);
+                        long gia = gioHangList.get(pos).getSoluong() * gioHangList.get(pos).getGiasp();
                         holder.giasp.setText(decimalFormat.format(gia));
                         EventBus.getDefault().postSticky(new TinhTongEvent());
                     }
-                    else if (gioHangList.get(pos).getSoluong()==1){
-                        AlertDialog.Builder builder = new AlertDialog.Builder(view.getRootView().getContext());
-                        builder.setTitle("Thông báo");
-                        builder.setMessage("Bạn có đồng ý xoá sản phẩm này khỏi giỏ hàng");
-                        builder.setPositiveButton("Đồng ý", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-                                Utils.gioHangList.remove(pos);
-                                notifyDataSetChanged();
-                                EventBus.getDefault().postSticky(new TinhTongEvent());
-                            }
-                        });
-                        builder.setNegativeButton("Huỷ", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-                            dialogInterface.dismiss();
-                            }
-                        });
-                        builder.show();
+                    else if (gioHangList.get(pos).getSoluong() == 1){
+                        createDeleteConfirmDialog(view, pos);
                     }
-                }else if (giatri == 2){
+                }
+                else if (value == ADD){
                     if (gioHangList.get(pos).getSoluong()>=0){
                         int soluongmoi = gioHangList.get(pos).getSoluong()+1;
                         gioHangList.get(pos).setSoluong(soluongmoi);
                     }
-                    holder.soluong.setText(gioHangList.get(pos).getSoluong()+" ");
-                    long gia = gioHangList.get(pos).getSoluong()*gioHangList.get(pos).getGiasp();
+                    String amount = gioHangList.get(pos).getSoluong() + "";
+                    holder.soluong.setText(amount);
+                    long gia = gioHangList.get(pos).getSoluong() * gioHangList.get(pos).getGiasp();
                     holder.giasp.setText(decimalFormat.format(gia));
                     EventBus.getDefault().postSticky(new TinhTongEvent());
                 }
             }
+
+            private void createDeleteConfirmDialog(View view, int pos) {
+                Dialog deleteConfirmDialog = new Dialog(view.getContext());
+                deleteConfirmDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                deleteConfirmDialog.setContentView(R.layout.dialog_delete_product);
+                TextView tvYes = deleteConfirmDialog.findViewById(R.id.tvYes);
+                TextView tvNo = deleteConfirmDialog.findViewById(R.id.tvNo);
+
+                tvYes.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Utils.gioHangList.remove(pos);
+                        notifyDataSetChanged();
+                        EventBus.getDefault().postSticky(new TinhTongEvent());
+                        EventBus.getDefault().postSticky(new EmptyCartEvent());
+                        deleteConfirmDialog.dismiss();
+                    }
+                });
+
+                tvNo.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        deleteConfirmDialog.dismiss();
+                    }
+                });
+
+                deleteConfirmDialog.setCancelable(true);
+                deleteConfirmDialog.show();
+            }
         });
     }
+
 
     @Override
     public int getItemCount() {
@@ -111,7 +129,7 @@ public class GioHangAdapter extends RecyclerView.Adapter<GioHangAdapter.MyViewHo
     public static class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         ImageView hinhanh, imgtru, imgcong;
         TextView tensp, giasp, soluong;
-        ImageClickListenner listenner;
+        ImageClickListener listener;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             hinhanh = itemView.findViewById(R.id.item_giohang_hinhanh);
@@ -125,18 +143,16 @@ public class GioHangAdapter extends RecyclerView.Adapter<GioHangAdapter.MyViewHo
             imgtru.setOnClickListener(this);
         }
 
-        public void setListenner(ImageClickListenner listenner) {
-            this.listenner = listenner;
+        public void setListener(ImageClickListener listener) {
+            this.listener = listener;
         }
 
         @Override
         public void onClick(View view) {
             if (view == imgtru){
-                listenner.onImageClick(view, getAdapterPosition(),1);
-                //1 tru
+                listener.onImageClick(view, getAdapterPosition(),SUBTRACT);
             }else if (view == imgcong){
-                listenner.onImageClick(view, getAdapterPosition(),2);
-                //2 cong
+                listener.onImageClick(view, getAdapterPosition(),ADD);
             }
         }
     }

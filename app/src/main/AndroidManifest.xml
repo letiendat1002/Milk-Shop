@@ -16,15 +16,6 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
         <activity
-            android:name=".activity.GioHangActivity"
-            android:exported="false" />
-        <activity
-            android:name=".activity.ChiTietActivity"
-            android:exported="false" />
-        <activity
-            android:name=".activity.SpTheoLoaiActivity"
-            android:exported="false" />
-        <activity
             android:name=".activity.TrangChuActivity"
             android:exported="true">
             <intent-filter>
@@ -33,6 +24,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".activity.GioHangActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.ChiTietActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.SpTheoLoaiActivity"
+            android:exported="false" />
     </application>
 
 </manifest>

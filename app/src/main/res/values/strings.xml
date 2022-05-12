@@ -12,4 +12,7 @@
     <string name="mua_hang_text">Mua Hàng</string>
     <string name="tong_cong_text">Tổng cộng</string>
     <string name="so_luong">1</string>
+    <string name="yes">Đồng ý</string>
+    <string name="no">Không</string>
+    <string name="delete_product_confirm">Bạn chắc chắn muốn bỏ sản phẩm này?</string>
 </resources>

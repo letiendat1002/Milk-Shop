@@ -7,7 +7,7 @@
     tools:context=".activity.GioHangActivity">
 
     <TextView
-        android:id="@+id/txtgiohangtrong"
+        android:id="@+id/emptyCart_giohang"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -19,7 +19,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
+        android:id="@+id/toolbar_giohang"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="@color/primary_blue"
@@ -27,13 +27,13 @@
         app:title="Giỏ Hàng" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycleviewgiohang"
+        android:id="@+id/recyclerview_giohang"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_margin="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintBottom_toTopOf="@id/framelayout"
-        app:layout_constraintTop_toBottomOf="@id/toolbar" />
+        app:layout_constraintTop_toBottomOf="@id/toolbar_giohang" />
 
     <FrameLayout
         android:id="@+id/framelayout"
@@ -56,7 +56,7 @@
                 android:textSize="18sp" />
 
             <TextView
-                android:id="@+id/txttongtien"
+                android:id="@+id/tvTongTien_giohang"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/gia_text"
@@ -66,7 +66,7 @@
         </LinearLayout>
 
         <Button
-            android:id="@+id/btnmuahang"
+            android:id="@+id/btnMuaHang_giohang"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end|center_vertical"

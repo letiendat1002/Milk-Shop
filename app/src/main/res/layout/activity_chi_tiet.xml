@@ -8,7 +8,7 @@
     tools:context=".activity.ChiTietActivity">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
+        android:id="@+id/toolbar_chitiet"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="@color/primary_blue"
@@ -16,14 +16,14 @@
         app:title="Chi Tiết Sản Phẩm">
 
         <FrameLayout
-            android:id="@+id/frame_icon_giohang"
+            android:id="@+id/frame_icon_giohang_chitiet"
             android:layout_width="55dp"
             android:layout_height="?attr/actionBarSize"
             android:layout_gravity="end"
             android:layout_marginEnd="10dp">
 
             <com.nex3z.notificationbadge.NotificationBadge
-                android:id="@+id/menu_sl"
+                android:id="@+id/badge_chitiet"
                 android:layout_width="28dp"
                 android:layout_height="28dp"
                 android:layout_gravity="top|end" />
@@ -44,7 +44,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:orientation="horizontal"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar">
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_chitiet">
 
         <ImageView
             android:id="@+id/ivHinhAnh_chitiet"
