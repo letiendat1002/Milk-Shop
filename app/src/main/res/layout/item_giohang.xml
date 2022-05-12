@@ -9,7 +9,7 @@
     app:cardElevation="5dp">
 
     <LinearLayout
-        android:id="@+id/layout1"
+        android:id="@+id/linearlayout_chitiet"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
@@ -17,7 +17,7 @@
         app:layout_constraintTop_toBottomOf="@+id/toolbar">
 
         <ImageView
-            android:id="@+id/imgchitiet"
+            android:id="@+id/item_giohang_hinhanh"
             android:layout_width="150dp"
             android:layout_height="200dp"
             android:contentDescription="@string/add_image_content"
@@ -33,7 +33,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/txttensp"
+                android:id="@+id/item_giohang_tensp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
@@ -44,7 +44,7 @@
                 android:textSize="22sp" />
 
             <TextView
-                android:id="@+id/txtgiasp"
+                android:id="@+id/item_giohang_giasp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
@@ -73,8 +73,10 @@
                     android:id="@+id/item_giohang_soluong"
                     android:layout_width="40dp"
                     android:layout_height="wrap_content"
+                    android:background="@drawable/style_textview"
                     android:gravity="center"
                     android:text="@string/so_luong"
+                    android:textColor="@color/black"
                     android:textSize="18sp" />
 
                 <ImageView

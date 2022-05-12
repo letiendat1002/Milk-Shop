@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 11, 2022 at 07:00 AM
+-- Generation Time: May 12, 2022 at 07:58 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -24,25 +24,49 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `category`
+-- Table structure for table `danhmucsp`
 --
 
-CREATE TABLE `category` (
+CREATE TABLE `danhmucsp` (
   `id` int(11) NOT NULL,
-  `tensanpham` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `tensp` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `hinhanh` text COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `category`
+-- Dumping data for table `danhmucsp`
 --
 
-INSERT INTO `category` (`id`, `tensanpham`, `hinhanh`) VALUES
-(1, 'Trang chủ', 'https://ngochieu.name.vn/img/home.png'),
-(2, 'Sữa tươi', 'https://tieudung.vn/upload_images/images/2021/12/14/sua-tuoi.jpg'),
-(3, 'Sữa bột', 'https://5.imimg.com/data5/XZ/XO/XH/SELLER-67095120/amul-milk-powder-500x500.jpg'),
-(4, 'Sữa đặc', 'https://static.toiimg.com/thumb/53222548.cms?imgsize=214293&width=800&height=800'),
-(5, 'Liên hệ', 'https://ngochieu.name.vn/img/contact.png');
+INSERT INTO `danhmucsp` (`id`, `tensp`, `hinhanh`) VALUES
+(1, 'Trang Chủ', 'https://ngochieu.name.vn/img/home.png'),
+(2, 'Sữa Tươi', 'https://tieudung.vn/upload_images/images/2021/12/14/sua-tuoi.jpg'),
+(3, 'Sữa Bột', 'https://5.imimg.com/data5/XZ/XO/XH/SELLER-67095120/amul-milk-powder-500x500.jpg'),
+(4, 'Sữa Đặc', 'https://static.toiimg.com/thumb/53222548.cms?imgsize=214293&width=800&height=800'),
+(5, 'Liên Hệ', 'https://ngochieu.name.vn/img/contact.png');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `linkquangcao`
+--
+
+CREATE TABLE `linkquangcao` (
+  `id` int(11) NOT NULL,
+  `hinhanh` text COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `linkquangcao`
+--
+
+INSERT INTO `linkquangcao` (`id`, `hinhanh`) VALUES
+(1, 'https://www.vinamilk.com.vn/sua-tuoi-vinamilk/wp-content/uploads/2021/05/VNM_Green-Farm_Banner_1920x914_2_en.jpg'),
+(2, 'https://storage.vietnamonlineacademy.vn/userfiles/9999/files/New%20Folder/cac-san-pham-cua-th-true-milk.jpg'),
+(3, 'https://pano.vn/wp-content/uploads/2021/05/Fami-quang-cao-o-to-becar-2.jpg'),
+(4, 'https://greenway.com.vn/wp-content/uploads/2018/08/milo-chien-dich-quang-cao-nang-dong-viet-nam-1024x630.jpg'),
+(5, 'https://chuangheta.com/wp-content/uploads/2020/09/sua-anlene-cho-nguoi-tren-40-tuoi.jpg'),
+(6, 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fgiacmosuaviet.com.vn%2Fproducts%2Fngoi-sao-phuong-nam-xanh-bien-380g-3&psig=AOvVaw3Xalcia8SNp_54xv6Ge5ZH&ust=1652421412840000&source=images&cd=vfe&ved=0CAwQjRxqFwoTCKjQgM-j2fcCFQAAAAAdAAAAABAD'),
+(7, 'https://haygheta.com/wp-content/uploads/2021/01/1-pediasure-la-mot-san-pham-cua-Abbott-copy.jpg');
 
 -- --------------------------------------------------------
 
@@ -95,9 +119,15 @@ INSERT INTO `sanpham` (`id`, `tensp`, `giasp`, `hinhanh`, `mota`, `loai`) VALUES
 --
 
 --
--- Indexes for table `category`
+-- Indexes for table `danhmucsp`
 --
-ALTER TABLE `category`
+ALTER TABLE `danhmucsp`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `linkquangcao`
+--
+ALTER TABLE `linkquangcao`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -111,10 +141,16 @@ ALTER TABLE `sanpham`
 --
 
 --
--- AUTO_INCREMENT for table `category`
+-- AUTO_INCREMENT for table `danhmucsp`
 --
-ALTER TABLE `category`
+ALTER TABLE `danhmucsp`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT for table `linkquangcao`
+--
+ALTER TABLE `linkquangcao`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `sanpham`

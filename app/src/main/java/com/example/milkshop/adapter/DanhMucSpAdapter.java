@@ -10,54 +10,54 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.milkshop.R;
-import com.example.milkshop.model.LoaiSp;
+import com.example.milkshop.model.DanhMucSp;
 
 import java.util.List;
 
-public class LoaiSpAdapter extends BaseAdapter {
-    List<LoaiSp> array;
+public class DanhMucSpAdapter extends BaseAdapter {
     Context context;
+    List<DanhMucSp> danhMucSpList;
 
-    public LoaiSpAdapter(Context context, List<LoaiSp> array) {
-        this.array = array;
+    public DanhMucSpAdapter(Context context, List<DanhMucSp> array) {
         this.context = context;
+        this.danhMucSpList = array;
     }
 
     @Override
     public int getCount() {
-        return array.size();
+        return danhMucSpList.size();
     }
 
     @Override
     public Object getItem(int i) {
         return null;
     }
- 
+
     @Override
     public long getItemId(int i) {
         return 0;
     }
 
-    public static class ViewHolder{
-        TextView textTenSp;
-        ImageView imgHinhAnh;
-    }
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
         ViewHolder viewHolder;
-        if (view == null){
+        if (view == null) {
             viewHolder = new ViewHolder();
             LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            view = layoutInflater.inflate(R.layout.item_category, null);
-            viewHolder.textTenSp = view.findViewById(R.id.item_tensp);
-            viewHolder.imgHinhAnh = view.findViewById(R.id.item_image);
+            view = layoutInflater.inflate(R.layout.item_danhmucsp, null);
+            viewHolder.hinhanh = view.findViewById(R.id.item_danhmucsp_hinhanh);
+            viewHolder.tensp = view.findViewById(R.id.item_danhmucsp_tensp);
             view.setTag(viewHolder);
-        }
-        else {
+        } else {
             viewHolder = (ViewHolder) view.getTag();
         }
-            viewHolder.textTenSp.setText(array.get(i).getTensanpham().trim());
-            Glide.with(context).load(array.get(i).getHinhanh()).into(viewHolder.imgHinhAnh);
+        viewHolder.tensp.setText(danhMucSpList.get(i).getTensp());
+        Glide.with(context).load(danhMucSpList.get(i).getHinhanh()).into(viewHolder.hinhanh);
         return view;
+    }
+
+    public static class ViewHolder {
+        ImageView hinhanh;
+        TextView tensp;
     }
 }

@@ -1,21 +1,21 @@
 package com.example.milkshop.model;
 
 public class GioHang {
-    int idsp;
+    int id;
     String tensp;
     long giasp;
-    String hinhsp;
+    String hinhanh;
     int soluong;
 
     public GioHang() {
     }
 
-    public int getIdsp() {
-        return idsp;
+    public int getId() {
+        return id;
     }
 
-    public void setIdsp(int idsp) {
-        this.idsp = idsp;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getTensp() {
@@ -34,12 +34,12 @@ public class GioHang {
         this.giasp = giasp;
     }
 
-    public String getHinhsp() {
-        return hinhsp;
+    public String getHinhanh() {
+        return hinhanh;
     }
 
-    public void setHinhsp(String hinhsp) {
-        this.hinhsp = hinhsp;
+    public void setHinhanh(String hinhanh) {
+        this.hinhanh = hinhanh;
     }
 
     public int getSoluong() {

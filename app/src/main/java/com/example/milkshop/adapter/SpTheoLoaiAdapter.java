@@ -21,34 +21,34 @@ import com.example.milkshop.model.SanPham;
 import java.text.DecimalFormat;
 import java.util.List;
 
-public class PhanLoaiAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class SpTheoLoaiAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     public static final int VIEW_TYPE_DATA = 0;
     public static final int VIEW_TYPE_LOADING = 1;
     Context context;
-    List<SanPham> array;
+    List<SanPham> phanLoaiList;
 
-    public PhanLoaiAdapter(Context context, List<SanPham> array) {
+    public SpTheoLoaiAdapter(Context context, List<SanPham> array) {
         this.context = context;
-        this.array = array;
+        this.phanLoaiList = array;
     }
 
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         if (viewType == VIEW_TYPE_DATA) {
-            View view = LayoutInflater.from(parent.getContext()).inflate(
-                    R.layout.item_phanloai,
+            View item = LayoutInflater.from(parent.getContext()).inflate(
+                    R.layout.item_sptheoloai,
                     parent,
                     false
             );
-            return new MyViewHolder(view);
+            return new MyViewHolder(item);
         } else {
-            View view = LayoutInflater.from(parent.getContext()).inflate(
+            View item = LayoutInflater.from(parent.getContext()).inflate(
                     R.layout.item_loading,
                     parent,
                     false
             );
-            return new LoadingViewHolder(view);
+            return new LoadingViewHolder(item);
         }
     }
 
@@ -56,7 +56,7 @@ public class PhanLoaiAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         if (holder instanceof MyViewHolder) {
             MyViewHolder myViewHolder = (MyViewHolder) holder;
-            SanPham sanPham = array.get(position);
+            SanPham sanPham = phanLoaiList.get(position);
             myViewHolder.tensp.setText(sanPham.getTensp().trim());
             DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
             String price = decimalFormat.format(Double.parseDouble(sanPham.getGiasp())) + "₫";
@@ -82,12 +82,12 @@ public class PhanLoaiAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
     @Override
     public int getItemViewType(int position) {
-        return array.get(position) == null ? VIEW_TYPE_LOADING : VIEW_TYPE_DATA;
+        return phanLoaiList.get(position) == null ? VIEW_TYPE_LOADING : VIEW_TYPE_DATA;
     }
 
     @Override
     public int getItemCount() {
-        return array.size();
+        return phanLoaiList.size();
     }
 
 
@@ -107,10 +107,10 @@ public class PhanLoaiAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            tensp = itemView.findViewById(R.id.itemphanloai_ten);
-            giasp = itemView.findViewById(R.id.itemphanloai_gia);
-            mota = itemView.findViewById(R.id.itemphanloai_mota);
-            hinhanh = itemView.findViewById(R.id.itemphanloai_image);
+            tensp = itemView.findViewById(R.id.item_sptheoloai_ten);
+            giasp = itemView.findViewById(R.id.item_sptheoloai_gia);
+            mota = itemView.findViewById(R.id.item_sptheoloai_mota);
+            hinhanh = itemView.findViewById(R.id.item_sptheoloai_image);
             itemView.setOnClickListener(this);
         }
 

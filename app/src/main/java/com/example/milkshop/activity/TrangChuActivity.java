@@ -24,9 +24,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.milkshop.R;
-import com.example.milkshop.adapter.LoaiSpAdapter;
+import com.example.milkshop.adapter.DanhMucSpAdapter;
 import com.example.milkshop.adapter.SanPhamAdapter;
-import com.example.milkshop.model.LoaiSp;
+import com.example.milkshop.model.DanhMucSp;
 import com.example.milkshop.model.SanPham;
 import com.example.milkshop.retrofit.ApiBanHang;
 import com.example.milkshop.retrofit.RetrofitClient;
@@ -48,26 +48,25 @@ public class TrangChuActivity extends AppCompatActivity {
     ListView listViewHome;
     DrawerLayout drawerLayout;
     ViewFlipper viewFlipper;
-    // Category
-    LoaiSpAdapter loaiSpAdapter;
-    List<LoaiSp> mangloaisp;
-    CompositeDisposable compositeDisposable = new CompositeDisposable();
+    CompositeDisposable compositeDisposable;
     ApiBanHang apiBanHang;
+    // Category
+    DanhMucSpAdapter danhMucSpAdapter;
+    List<DanhMucSp> danhMucSpList;
     // Product
-    List<SanPham> mangsanpham;
+    List<SanPham> sanPhamList;
     SanPhamAdapter sanPhamAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        apiBanHang = RetrofitClient.getInstance(Utils.BASE_URL).create(ApiBanHang.class);
+        setContentView(R.layout.activity_trangchu);
         addControls();
         addEvents();
         ActionBar();
         if (isConnected(this)) {
             ActionViewFlipper();
-            getLoaiSanPham();
+            getDanhMucSanPham();
             getSanPham();
         } else {
             Toast.makeText(
@@ -78,44 +77,78 @@ public class TrangChuActivity extends AppCompatActivity {
         }
     }
 
-    private void getSanPham() {
-        compositeDisposable.add(apiBanHang.getSanPham()
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(
-                        sanPhamModel -> {
-                            if (sanPhamModel.isSuccess()) {
-                                mangsanpham = sanPhamModel.getResult();
-                                sanPhamAdapter = new SanPhamAdapter(getApplicationContext(), mangsanpham);
-                                recyclerViewHome.setAdapter(sanPhamAdapter);
-                            }
-                        },
-                        throwable -> Toast.makeText(
-                                getApplicationContext(),
-                                "Không kết nối được với server\n" + throwable.getMessage(),
-                                Toast.LENGTH_LONG
-                        ).show()
-                ));
+    private void addControls() {
+        compositeDisposable = new CompositeDisposable();
+        apiBanHang = RetrofitClient.getInstance(Utils.BASE_URL).create(ApiBanHang.class);
+        toolbar = findViewById(R.id.toolbarhome);
+
+        recyclerViewHome = findViewById(R.id.recycleview);
+        RecyclerView.LayoutManager layoutManager = new GridLayoutManager(this, 2);
+        recyclerViewHome.setLayoutManager(layoutManager);
+        recyclerViewHome.setHasFixedSize(true);
+
+        navigationView = findViewById(R.id.navigationview);
+        listViewHome = findViewById(R.id.listviewhome);
+        drawerLayout = findViewById(R.id.drawerlayout);
+        viewFlipper = findViewById(R.id.viewFlipper);
+
+        danhMucSpList = new ArrayList<>();
+        sanPhamList = new ArrayList<>();
+
+        if (Utils.gioHangList == null) {
+            Utils.gioHangList = new ArrayList<>();
+        }
     }
 
-    private void getLoaiSanPham() {
-        compositeDisposable.add(apiBanHang.getLoaiSp()
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(
-                        loaiSpModel -> {
-                            if (loaiSpModel.isSuccess()) {
-                                mangloaisp = loaiSpModel.getResult();
-                                loaiSpAdapter = new LoaiSpAdapter(getApplicationContext(), mangloaisp);
-                                listViewHome.setAdapter(loaiSpAdapter);
-                            }
-                        },
-                        throwable -> Toast.makeText(
-                                getApplicationContext(),
-                                "Không kết nối được với server\n" + throwable.getMessage(),
-                                Toast.LENGTH_LONG
-                        ).show()
-                ));
+    private void addEvents() {
+        listViewHome.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                switch (i) {
+                    case 0: // Trang Chu
+                        startActivity(new Intent(getApplicationContext(), TrangChuActivity.class));
+                        break;
+                    case 1: // Sua Tuoi
+                        Intent suatuoi = new Intent(getApplicationContext(), SpTheoLoaiActivity.class);
+                        suatuoi.putExtra("loai", 1);
+                        startActivity(suatuoi);
+                        break;
+                    case 2: // Sua Bot
+                        Intent suabot = new Intent(getApplicationContext(), SpTheoLoaiActivity.class);
+                        suabot.putExtra("loai", 2);
+                        startActivity(suabot);
+                        break;
+                    case 3: // Sua Dac
+                        Intent suadac = new Intent(getApplicationContext(), SpTheoLoaiActivity.class);
+                        suadac.putExtra("loai", 3);
+                        startActivity(suadac);
+                        break;
+                    case 4: // Lien He
+                        String hotline = "tel:" + "19006666";
+                        startActivity(new Intent(Intent.ACTION_DIAL, Uri.parse(hotline)));
+                        break;
+                }
+            }
+        });
+    }
+
+    private void ActionBar() {
+        setSupportActionBar(toolbar);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+        toolbar.setNavigationIcon(android.R.drawable.ic_menu_sort_by_size);
+        toolbar.setNavigationOnClickListener(view -> drawerLayout.openDrawer(GravityCompat.START));
+    }
+
+    // Kiem tra thiet bi co ket noi internet khong? Wifi + Mobile data
+    private boolean isConnected(Context context) {
+        ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(
+                Context.CONNECTIVITY_SERVICE
+        );
+        NetworkInfo activeNetwork = null;
+        if (connectivityManager != null) {
+            activeNetwork = connectivityManager.getActiveNetworkInfo();
+        }
+        return activeNetwork != null;
     }
 
     private void ActionViewFlipper() {
@@ -137,43 +170,44 @@ public class TrangChuActivity extends AppCompatActivity {
         viewFlipper.setOutAnimation(slide_out);
     }
 
-    private void ActionBar() {
-        setSupportActionBar(toolbar);
-        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
-        toolbar.setNavigationIcon(android.R.drawable.ic_menu_sort_by_size);
-        toolbar.setNavigationOnClickListener(view -> drawerLayout.openDrawer(GravityCompat.START));
+    private void getDanhMucSanPham() {
+        compositeDisposable.add(apiBanHang.getDanhMucSp()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(
+                        danhMucSpModel -> {
+                            if (danhMucSpModel.isSuccess()) {
+                                danhMucSpList = danhMucSpModel.getResult();
+                                danhMucSpAdapter = new DanhMucSpAdapter(getApplicationContext(), danhMucSpList);
+                                listViewHome.setAdapter(danhMucSpAdapter);
+                            }
+                        },
+                        throwable -> Toast.makeText(
+                                getApplicationContext(),
+                                "Không kết nối được với server\n" + throwable.getMessage(),
+                                Toast.LENGTH_LONG
+                        ).show()
+                ));
     }
 
-    private void addControls() {
-        toolbar = findViewById(R.id.toolbarhome);
-
-        recyclerViewHome = findViewById(R.id.recycleview);
-        RecyclerView.LayoutManager layoutManager = new GridLayoutManager(this, 2);
-        recyclerViewHome.setLayoutManager(layoutManager);
-        recyclerViewHome.setHasFixedSize(true);
-
-        navigationView = findViewById(R.id.navigationview);
-        listViewHome = findViewById(R.id.listviewhome);
-        drawerLayout = findViewById(R.id.drawerlayout);
-        viewFlipper = findViewById(R.id.viewFlipper);
-        // Khoi tao list
-        mangloaisp = new ArrayList<>();
-        mangsanpham = new ArrayList<>();
-        if (Utils.manggiohang == null) {
-            Utils.manggiohang = new ArrayList<>();
-        }
-    }
-
-    // Kiem tra thiet bi co ket noi internet khong? Wifi + Mobile data
-    private boolean isConnected(Context context) {
-        ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(
-                Context.CONNECTIVITY_SERVICE
-        );
-        NetworkInfo activeNetwork = null;
-        if (connectivityManager != null) {
-            activeNetwork = connectivityManager.getActiveNetworkInfo();
-        }
-        return activeNetwork != null;
+    private void getSanPham() {
+        compositeDisposable.add(apiBanHang.getSanPham()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(
+                        sanPhamModel -> {
+                            if (sanPhamModel.isSuccess()) {
+                                sanPhamList = sanPhamModel.getResult();
+                                sanPhamAdapter = new SanPhamAdapter(getApplicationContext(), sanPhamList);
+                                recyclerViewHome.setAdapter(sanPhamAdapter);
+                            }
+                        },
+                        throwable -> Toast.makeText(
+                                getApplicationContext(),
+                                "Không kết nối được với server\n" + throwable.getMessage(),
+                                Toast.LENGTH_LONG
+                        ).show()
+                ));
     }
 
     @Override
@@ -182,35 +216,9 @@ public class TrangChuActivity extends AppCompatActivity {
         super.onDestroy();
     }
 
-    private void addEvents() {
-        listViewHome.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                switch (i) {
-                    case 0:
-                        startActivity(new Intent(getApplicationContext(), TrangChuActivity.class));
-                        break;
-                    case 1: // Sua Tuoi
-                        Intent suatuoi = new Intent(getApplicationContext(), PhanLoaiActivity.class);
-                        suatuoi.putExtra("loai", 1);
-                        startActivity(suatuoi);
-                        break;
-                    case 2: // Sua Bot
-                        Intent suabot = new Intent(getApplicationContext(), PhanLoaiActivity.class);
-                        suabot.putExtra("loai", 2);
-                        startActivity(suabot);
-                        break;
-                    case 3: // Sua Dac
-                        Intent suadac = new Intent(getApplicationContext(), PhanLoaiActivity.class);
-                        suadac.putExtra("loai", 3);
-                        startActivity(suadac);
-                        break;
-                    case 4:
-                        String hotline = "tel:" + "19006666";
-                        startActivity(new Intent(Intent.ACTION_DIAL, Uri.parse(hotline)));
-                        break;
-                }
-            }
-        });
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
     }
 }

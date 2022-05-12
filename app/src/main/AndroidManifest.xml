@@ -22,7 +22,7 @@
             android:name=".activity.ChiTietActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.PhanLoaiActivity"
+            android:name=".activity.SpTheoLoaiActivity"
             android:exported="false" />
         <activity
             android:name=".activity.TrangChuActivity"

@@ -8,7 +8,7 @@
     tools:ignore="UseCompoundDrawables">
 
     <ImageView
-        android:id="@+id/item_image"
+        android:id="@+id/item_danhmucsp_hinhanh"
         android:layout_width="55dp"
         android:layout_height="55dp"
         android:layout_marginStart="10dp"
@@ -16,7 +16,7 @@
         android:src="@drawable/ic_media_24" />
 
     <TextView
-        android:id="@+id/item_tensp"
+        android:id="@+id/item_danhmucsp_tensp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"

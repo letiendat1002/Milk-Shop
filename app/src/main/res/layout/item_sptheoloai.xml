@@ -15,7 +15,7 @@
         android:weightSum="10">
 
         <ImageView
-            android:id="@+id/itemphanloai_image"
+            android:id="@+id/item_sptheoloai_image"
             android:layout_width="0dp"
             android:layout_height="100dp"
             android:layout_gravity="center"
@@ -30,7 +30,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/itemphanloai_ten"
+                android:id="@+id/item_sptheoloai_ten"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
@@ -43,7 +43,7 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/itemphanloai_gia"
+                android:id="@+id/item_sptheoloai_gia"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
@@ -54,7 +54,7 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/itemphanloai_mota"
+                android:id="@+id/item_sptheoloai_mota"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"

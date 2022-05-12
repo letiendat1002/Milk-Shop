@@ -16,6 +16,7 @@
         app:title="Chi Tiết Sản Phẩm">
 
         <FrameLayout
+            android:id="@+id/frame_icon_giohang"
             android:layout_width="55dp"
             android:layout_height="?attr/actionBarSize"
             android:layout_gravity="end"
@@ -38,7 +39,7 @@
     </androidx.appcompat.widget.Toolbar>
 
     <LinearLayout
-        android:id="@+id/layout1"
+        android:id="@+id/linearlayout_chitiet"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
@@ -46,7 +47,7 @@
         app:layout_constraintTop_toBottomOf="@+id/toolbar">
 
         <ImageView
-            android:id="@+id/imgchitiet"
+            android:id="@+id/ivHinhAnh_chitiet"
             android:layout_width="150dp"
             android:layout_height="200dp"
             android:contentDescription="@string/add_image_content"
@@ -61,7 +62,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/txttensp"
+                android:id="@+id/tvTenSp_chitiet"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
@@ -72,7 +73,7 @@
                 android:textSize="22sp" />
 
             <TextView
-                android:id="@+id/txtgiasp"
+                android:id="@+id/tvGiaSp_chitiet"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
@@ -83,7 +84,7 @@
                 android:textStyle="bold" />
 
             <Spinner
-                android:id="@+id/spinner"
+                android:id="@+id/spinner_chitiet"
                 android:layout_width="225dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
@@ -93,7 +94,7 @@
                 android:gravity="center" />
 
             <Button
-                android:id="@+id/btnAddToCart"
+                android:id="@+id/btnAddToCart_chitiet"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
@@ -113,7 +114,7 @@
         android:layout_marginTop="5dp"
         android:layout_marginBottom="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/layout1">
+        app:layout_constraintTop_toBottomOf="@+id/linearlayout_chitiet">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -131,7 +132,7 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/txtmotachitiet"
+                android:id="@+id/tvMoTa_chitiet"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginStart="10dp"
