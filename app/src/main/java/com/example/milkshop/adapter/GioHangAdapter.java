@@ -13,7 +13,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.milkshop.Interface.ImageClickListenner;
 import com.example.milkshop.R;
+import com.example.milkshop.model.EventBus.TinhTongEvent;
 import com.example.milkshop.model.GioHang;
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.text.DecimalFormat;
 import java.util.List;
@@ -65,6 +68,7 @@ public class GioHangAdapter extends RecyclerView.Adapter<GioHangAdapter.MyViewHo
                 holder.soluong.setText(gioHangList.get(pos).getSoluong()+" ");
                 long gia = gioHangList.get(pos).getSoluong()*gioHangList.get(pos).getGiasp();
                 holder.giasp.setText(decimalFormat.format(gia));
+                EventBus.getDefault().postSticky(new TinhTongEvent());
             }
         });
     }

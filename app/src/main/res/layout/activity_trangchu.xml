@@ -21,30 +21,29 @@
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 android:background="@color/primary_blue"
-                app:title="Trang Chủ" />
+                app:title="Trang Chủ" >
+                <FrameLayout
+                    android:id="@+id/frame_icon_giohang"
+                    android:layout_width="55dp"
+                    android:layout_height="?attr/actionBarSize"
+                    android:layout_marginTop="-55dp"
+                    android:layout_gravity="end"
+                    android:layout_marginEnd="10dp">
 
-            <FrameLayout
-                android:id="@+id/frame_icon_giohang"
-                android:layout_width="55dp"
-                android:layout_height="?attr/actionBarSize"
-                android:layout_marginTop="-55dp"
-                android:layout_gravity="end"
-                android:layout_marginEnd="10dp">
+                    <com.nex3z.notificationbadge.NotificationBadge
+                        android:id="@+id/menu_sl"
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:layout_gravity="top|end" />
 
-                <com.nex3z.notificationbadge.NotificationBadge
-                    android:id="@+id/menu_sl"
-                    android:layout_width="28dp"
-                    android:layout_height="28dp"
-                    android:layout_gravity="top|end" />
-
-                <ImageView
-                    android:layout_width="43dp"
-                    android:layout_height="37dp"
-                    android:layout_marginTop="15dp"
-                    android:contentDescription="@string/add_image_content"
-                    android:src="@drawable/ic_cart" />
-            </FrameLayout>
-
+                    <ImageView
+                        android:layout_width="43dp"
+                        android:layout_height="37dp"
+                        android:layout_marginTop="15dp"
+                        android:contentDescription="@string/add_image_content"
+                        android:src="@drawable/ic_cart" />
+                </FrameLayout>
+            </androidx.appcompat.widget.Toolbar>
             <ViewFlipper
                 android:id="@+id/viewFlipper"
                 android:layout_width="match_parent"
