@@ -2,10 +2,10 @@ package com.example.milkshop.model;
 
 import java.util.List;
 
-public class LoaiSpModel {
+public class DanhMucSpModel {
     boolean success;
     String message;
-    List<LoaiSp> result;
+    List<DanhMucSp> result;
 
     public boolean isSuccess() {
         return success;
@@ -23,11 +23,11 @@ public class LoaiSpModel {
         this.message = message;
     }
 
-    public List<LoaiSp> getResult() {
+    public List<DanhMucSp> getResult() {
         return result;
     }
 
-    public void setResult(List<LoaiSp> result) {
+    public void setResult(List<DanhMucSp> result) {
         this.result = result;
     }
 }

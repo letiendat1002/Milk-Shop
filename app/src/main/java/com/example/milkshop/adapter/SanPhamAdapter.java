@@ -22,11 +22,11 @@ import java.util.List;
 
 public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.MyViewHolder> {
     Context context;
-    List<SanPham> array;
+    List<SanPham> sanPhamList;
 
     public SanPhamAdapter(Context context, List<SanPham> array) {
         this.context = context;
-        this.array = array;
+        this.sanPhamList = array;
     }
 
     @NonNull
@@ -42,12 +42,12 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.MyViewHo
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        SanPham sanPham = array.get(position);
-        holder.txtTen.setText(sanPham.getTensp());
+        SanPham sanPham = sanPhamList.get(position);
+        holder.tensp.setText(sanPham.getTensp().trim());
         DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
-        String price = decimalFormat.format(Double.parseDouble(sanPham.getGiasp())) + "đ";
-        holder.txtGia.setText(price);
-        Glide.with(context).load(sanPham.getHinhanh()).into(holder.imgHinhAnh);
+        String price = decimalFormat.format(Double.parseDouble(sanPham.getGiasp())) + "₫";
+        holder.giasp.setText(price);
+        Glide.with(context).load(sanPham.getHinhanh()).into(holder.hinhanh);
 
         holder.setItemClickListener(new ItemClickListener() {
             @Override
@@ -64,19 +64,19 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.MyViewHo
 
     @Override
     public int getItemCount() {
-        return array.size();
+        return sanPhamList.size();
     }
 
     public static class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        TextView txtGia, txtTen;
-        ImageView imgHinhAnh;
+        TextView tensp, giasp;
+        ImageView hinhanh;
         private ItemClickListener itemClickListener;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            txtGia = itemView.findViewById(R.id.itemsp_gia);
-            txtTen = itemView.findViewById(R.id.itemsp_ten);
-            imgHinhAnh = itemView.findViewById(R.id.itemsp_image);
+            tensp = itemView.findViewById(R.id.item_sanpham_ten);
+            giasp = itemView.findViewById(R.id.item_sanpham_gia);
+            hinhanh = itemView.findViewById(R.id.item_sanpham_hinhanh);
             itemView.setOnClickListener(this);
         }
 

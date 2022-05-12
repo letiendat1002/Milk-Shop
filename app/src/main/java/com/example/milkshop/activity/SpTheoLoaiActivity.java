@@ -2,7 +2,6 @@ package com.example.milkshop.activity;
 
 import android.os.Bundle;
 import android.os.Handler;
-import android.view.View;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -12,7 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.milkshop.R;
-import com.example.milkshop.adapter.PhanLoaiAdapter;
+import com.example.milkshop.adapter.SpTheoLoaiAdapter;
 import com.example.milkshop.model.SanPham;
 import com.example.milkshop.retrofit.ApiBanHang;
 import com.example.milkshop.retrofit.RetrofitClient;
@@ -26,15 +25,15 @@ import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
 import io.reactivex.rxjava3.disposables.CompositeDisposable;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 
-public class PhanLoaiActivity extends AppCompatActivity {
+public class SpTheoLoaiActivity extends AppCompatActivity {
     Toolbar toolbar;
     RecyclerView recyclerView;
     CompositeDisposable compositeDisposable;
     ApiBanHang apiBanHang;
     int page;
     int loai;
-    List<SanPham> mangsanpham;
-    PhanLoaiAdapter phanLoaiAdapter;
+    List<SanPham> sanPhamList;
+    SpTheoLoaiAdapter spTheoLoaiAdapter;
     LinearLayoutManager linearLayoutManager;
     Handler handler;
     boolean isLoading;
@@ -42,6 +41,16 @@ public class PhanLoaiActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        addControls();
+        ActionToolBar();
+        getData(page);
+        addEvents();
+    }
+
+    private void addControls() {
+        compositeDisposable = new CompositeDisposable();
+        apiBanHang = RetrofitClient.getInstance(Utils.BASE_URL).create(ApiBanHang.class);
+        page = 1;
         loai = getIntent().getIntExtra("loai", 1);
         switch (loai) {
             case 1:
@@ -57,26 +66,14 @@ public class PhanLoaiActivity extends AppCompatActivity {
                 recyclerView = findViewById((R.id.recycleview_suadac));
                 break;
         }
-        addControls();
-        ActionToolBar();
-        getData(page);
-        addEvents();
-    }
-
-    private void addControls() {
-        compositeDisposable = new CompositeDisposable();
-        apiBanHang = RetrofitClient.getInstance(Utils.BASE_URL).create(ApiBanHang.class);
-        page = 1;
         toolbar = findViewById(R.id.toolbar);
-
         linearLayoutManager = new LinearLayoutManager(
                 this,
                 LinearLayoutManager.VERTICAL,
                 false);
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setHasFixedSize(true);
-        mangsanpham = new ArrayList<>();
-
+        sanPhamList = new ArrayList<>();
         handler = new Handler();
         isLoading = false;
     }
@@ -88,23 +85,23 @@ public class PhanLoaiActivity extends AppCompatActivity {
     }
 
     private void getData(int page) {
-        compositeDisposable.add(apiBanHang.getPhanLoai(page, loai)
+        compositeDisposable.add(apiBanHang.getSpTheoLoai(page, loai)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
                         sanPhamModel -> {
                             if (sanPhamModel.isSuccess()) {
-                                if (phanLoaiAdapter == null) { // Không có data
-                                    mangsanpham = sanPhamModel.getResult();
-                                    phanLoaiAdapter = new PhanLoaiAdapter(getApplicationContext(), mangsanpham);
-                                    recyclerView.setAdapter(phanLoaiAdapter);
+                                if (spTheoLoaiAdapter == null) { // Không có data
+                                    sanPhamList = sanPhamModel.getResult();
+                                    spTheoLoaiAdapter = new SpTheoLoaiAdapter(getApplicationContext(), sanPhamList);
+                                    recyclerView.setAdapter(spTheoLoaiAdapter);
                                 } else { // Đã có data
-                                    int pos = mangsanpham.size() - 1;
+                                    int pos = sanPhamList.size() - 1;
                                     int addAmount = sanPhamModel.getResult().size();
                                     for (int i = 0; i < addAmount; ++i) {
-                                        mangsanpham.add(sanPhamModel.getResult().get(i));
+                                        sanPhamList.add(sanPhamModel.getResult().get(i));
                                     }
-                                    phanLoaiAdapter.notifyItemRangeInserted(pos, addAmount);
+                                    spTheoLoaiAdapter.notifyItemRangeInserted(pos, addAmount);
                                 }
                             } else {
                                 Toast.makeText(
@@ -133,7 +130,7 @@ public class PhanLoaiActivity extends AppCompatActivity {
             public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
                 if (!isLoading) {
-                    if (linearLayoutManager.findLastCompletelyVisibleItemPosition() == mangsanpham.size() - 1) {
+                    if (linearLayoutManager.findLastCompletelyVisibleItemPosition() == sanPhamList.size() - 1) {
                         isLoading = true;
                         loadMore();
                     }
@@ -147,18 +144,18 @@ public class PhanLoaiActivity extends AppCompatActivity {
             @Override
             public void run() {
                 // add null
-                mangsanpham.add(null);
-                phanLoaiAdapter.notifyItemInserted(mangsanpham.size() - 1);
+                sanPhamList.add(null);
+                spTheoLoaiAdapter.notifyItemInserted(sanPhamList.size() - 1);
             }
         });
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                mangsanpham.remove(mangsanpham.size() - 1);
-                phanLoaiAdapter.notifyItemRemoved(mangsanpham.size() - 1);
+                sanPhamList.remove(sanPhamList.size() - 1);
+                spTheoLoaiAdapter.notifyItemRemoved(sanPhamList.size() - 1);
                 page += 1;
                 getData(page);
-                phanLoaiAdapter.notifyDataSetChanged();
+                spTheoLoaiAdapter.notifyDataSetChanged();
                 isLoading = false;
             }
         }, 2000);

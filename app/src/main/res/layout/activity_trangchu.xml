@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.MainActivity">
+    tools:context=".activity.TrangChuActivity">
 
     <androidx.drawerlayout.widget.DrawerLayout
         android:id="@+id/drawerlayout"
@@ -21,7 +21,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 android:background="@color/primary_blue"
-                app:title="Trang chủ" />
+                app:title="Trang Chủ" />
 
             <ViewFlipper
                 android:id="@+id/viewFlipper"
@@ -39,6 +39,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="25dp"
                     android:layout_marginTop="10dp"
+                    android:layout_marginBottom="5dp"
                     android:text="@string/product_text"
                     android:textColor="@color/black"
                     android:textSize="22sp" />
@@ -47,7 +48,8 @@
                     android:id="@+id/recycleview"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginStart="5dp" />
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp" />
             </LinearLayout>
 
         </LinearLayout>

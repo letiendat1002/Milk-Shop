@@ -13,9 +13,10 @@
         android:layout_height="?attr/actionBarSize"
         android:background="@color/primary_blue"
         app:layout_constraintTop_toTopOf="parent"
-        app:title="Chi tiết sản phẩm">
+        app:title="Chi Tiết Sản Phẩm">
 
         <FrameLayout
+            android:id="@+id/frame_icon_giohang"
             android:layout_width="55dp"
             android:layout_height="?attr/actionBarSize"
             android:layout_gravity="end"
@@ -38,7 +39,7 @@
     </androidx.appcompat.widget.Toolbar>
 
     <LinearLayout
-        android:id="@+id/layout1"
+        android:id="@+id/linearlayout_chitiet"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
@@ -46,7 +47,7 @@
         app:layout_constraintTop_toBottomOf="@+id/toolbar">
 
         <ImageView
-            android:id="@+id/imgchitiet"
+            android:id="@+id/ivHinhAnh_chitiet"
             android:layout_width="150dp"
             android:layout_height="200dp"
             android:contentDescription="@string/add_image_content"
@@ -57,23 +58,22 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginStart="5dp"
             android:gravity="center|start"
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/txttensp"
+                android:id="@+id/tvTenSp_chitiet"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
                 android:ellipsize="end"
-                android:maxLines="1"
+                android:maxLines="2"
                 android:text="@string/ten_san_pham"
                 android:textColor="@color/black"
-                android:textSize="22sp" />
+                android:textSize="18sp" />
 
             <TextView
-                android:id="@+id/txtgiasp"
+                android:id="@+id/tvGiaSp_chitiet"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
@@ -84,25 +84,26 @@
                 android:textStyle="bold" />
 
             <Spinner
-                android:id="@+id/spinner"
-                android:layout_width="225dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginEnd="20dp"
-                android:background="@drawable/spinner"
-                android:gravity="center" />
-
-            <Button
-                android:id="@+id/btnAddToCart"
+                android:id="@+id/spinner_chitiet"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
                 android:layout_marginTop="5dp"
-                android:layout_marginEnd="15dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/spinner"
+                android:gravity="center" />
+
+            <Button
+                android:id="@+id/btnAddToCart_chitiet"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="10dp"
                 android:backgroundTint="@color/dark_blue"
                 android:text="@string/them_vao_gio_hang"
-                android:textColor="#000000" />
+                android:textColor="#000000"
+                android:textSize="13sp" />
 
         </LinearLayout>
     </LinearLayout>
@@ -113,7 +114,7 @@
         android:layout_marginTop="5dp"
         android:layout_marginBottom="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/layout1">
+        app:layout_constraintTop_toBottomOf="@+id/linearlayout_chitiet">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -131,14 +132,14 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/txtmotachitiet"
+                android:id="@+id/tvMoTa_chitiet"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginEnd="10dp"
                 android:textColor="@color/black"
-                android:textSize="15sp" />
+                android:textSize="18sp" />
         </LinearLayout>
     </ScrollView>
 

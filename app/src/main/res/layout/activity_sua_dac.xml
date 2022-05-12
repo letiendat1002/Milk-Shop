@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.PhanLoaiActivity">
+    tools:context=".activity.SpTheoLoaiActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -12,8 +12,8 @@
         android:layout_height="?attr/actionBarSize"
         android:background="#A8DCE3"
         app:layout_constraintTop_toTopOf="parent"
-        app:title="Sữa đặc"
-        tools:context=".activity.PhanLoaiActivity" />
+        app:title="Sữa Đặc"
+        tools:context=".activity.SpTheoLoaiActivity" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycleview_suadac"

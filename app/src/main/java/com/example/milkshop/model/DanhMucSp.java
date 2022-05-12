@@ -1,8 +1,8 @@
 package com.example.milkshop.model;
 
-public class LoaiSp {
+public class DanhMucSp {
     int id;
-    String tensanpham;
+    String tensp;
     String hinhanh;
 
     public int getId() {
@@ -13,12 +13,12 @@ public class LoaiSp {
         this.id = id;
     }
 
-    public String getTensanpham() {
-        return tensanpham;
+    public String getTensp() {
+        return tensp;
     }
 
-    public void setTensanpham(String tensanpham) {
-        this.tensanpham = tensanpham;
+    public void setTensp(String tensp) {
+        this.tensp = tensp;
     }
 
     public String getHinhanh() {
