@@ -1,5 +1,6 @@
 package com.example.milkshop.activity;
 
+import android.app.Notification;
 import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
@@ -10,6 +11,7 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -32,6 +34,7 @@ import com.example.milkshop.retrofit.ApiBanHang;
 import com.example.milkshop.retrofit.RetrofitClient;
 import com.example.milkshop.utils.Utils;
 import com.google.android.material.navigation.NavigationView;
+import com.nex3z.notificationbadge.NotificationBadge;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -56,6 +59,8 @@ public class TrangChuActivity extends AppCompatActivity {
     // Product
     List<SanPham> sanPhamList;
     SanPhamAdapter sanPhamAdapter;
+    NotificationBadge badge;
+    FrameLayout frameLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,6 +95,8 @@ public class TrangChuActivity extends AppCompatActivity {
         navigationView = findViewById(R.id.navigationview);
         listViewHome = findViewById(R.id.listviewhome);
         drawerLayout = findViewById(R.id.drawerlayout);
+        badge = findViewById(R.id.menu_sl);
+        frameLayout = findViewById(R.id.frame_icon_giohang);
         viewFlipper = findViewById(R.id.viewFlipper);
 
         danhMucSpList = new ArrayList<>();
@@ -98,6 +105,30 @@ public class TrangChuActivity extends AppCompatActivity {
         if (Utils.gioHangList == null) {
             Utils.gioHangList = new ArrayList<>();
         }
+        else {
+            int totalItems = 0;
+            for (int i = 0; i < Utils.gioHangList.size(); ++i) {
+                totalItems += Utils.gioHangList.get(i).getSoluong();
+            }
+            badge.setText(String.valueOf(totalItems));
+        }
+        frameLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent giohang = new Intent(getApplicationContext(),GioHangActivity.class);
+                startActivity(giohang);
+            }
+        });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        int totalItems = 0;
+        for (int i = 0; i < Utils.gioHangList.size(); ++i) {
+            totalItems += Utils.gioHangList.get(i).getSoluong();
+        }
+        badge.setText(String.valueOf(totalItems));
     }
 
     private void addEvents() {

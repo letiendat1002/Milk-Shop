@@ -14,6 +14,7 @@ import com.example.milkshop.R;
 import com.example.milkshop.adapter.GioHangAdapter;
 import com.example.milkshop.utils.Utils;
 
+import java.text.DecimalFormat;
 import java.util.Objects;
 
 public class GioHangActivity extends AppCompatActivity {
@@ -29,6 +30,17 @@ public class GioHangActivity extends AppCompatActivity {
         setContentView(R.layout.activity_gio_hang);
         addControls();
         ActionToolBar();
+        tinhTongTien();
+    }
+
+    private void tinhTongTien() {
+        long tongtiensp = 0;
+        for (int i = 0; i <Utils.gioHangList.size(); i++){
+            tongtiensp = tongtiensp+(Utils.gioHangList.get(i).getGiasp()*Utils.gioHangList.get(i).getSoluong());
+        }
+        DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
+        tongtien.setText(decimalFormat.format(tongtiensp));
+
     }
 
     private void addControls() {
