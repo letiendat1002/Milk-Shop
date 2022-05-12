@@ -4,8 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="150dp"
     android:layout_margin="5dp"
-    app:cardElevation="8dp"
-    app:cardCornerRadius="5dp">
+    app:cardCornerRadius="10dp"
+    app:cardElevation="5dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -33,30 +33,31 @@
                 android:id="@+id/itemphanloai_ten"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:ellipsize="end"
                 android:layout_marginStart="5dp"
-                android:textColor="@color/black"
+                android:ellipsize="end"
                 android:maxLines="2"
+                android:minLines="2"
                 android:text="@string/ten_san_pham"
+                android:textColor="@color/black"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/itemphanloai_gia"
-                android:layout_marginStart="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
                 android:layout_marginTop="7dp"
-                android:textStyle="bold"
                 android:text="@string/gia_text"
                 android:textColor="@color/purple_price"
-                android:textSize="20sp" />
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/itemphanloai_mota"
                 android:layout_width="match_parent"
-                android:layout_marginStart="5dp"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
                 android:layout_marginTop="5dp"
                 android:ellipsize="end"
                 android:maxLines="2"
