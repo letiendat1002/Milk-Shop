@@ -64,7 +64,7 @@ public class ChiTietActivity extends AppCompatActivity {
     private void addData() {
         if (Utils.gioHangList != null) {
             int totalItems = 0;
-            for (int i = 0; i < Utils.gioHangList.size(); ++i){
+            for (int i = 0; i < Utils.gioHangList.size(); i++){
                 totalItems += Utils.gioHangList.get(i).getSoluong();
             }
             badge.setText(String.valueOf(totalItems));
@@ -83,6 +83,18 @@ public class ChiTietActivity extends AppCompatActivity {
                 itemSpinner
         );
         spinner.setAdapter(spinnerAdapter);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (Utils.gioHangList != null) {
+            int totalItems = 0;
+            for (int i = 0; i < Utils.gioHangList.size(); i++){
+                totalItems += Utils.gioHangList.get(i).getSoluong();
+            }
+            badge.setText(String.valueOf(totalItems));
+        }
     }
 
     private void addEvents() {
