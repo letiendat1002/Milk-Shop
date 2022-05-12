@@ -41,7 +41,7 @@ import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
 import io.reactivex.rxjava3.disposables.CompositeDisposable;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 
-public class MainActivity extends AppCompatActivity {
+public class TrangChuActivity extends AppCompatActivity {
     Toolbar toolbar;
     RecyclerView recyclerViewHome;
     NavigationView navigationView;
@@ -188,7 +188,7 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 switch (i) {
                     case 0:
-                        startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                        startActivity(new Intent(getApplicationContext(), TrangChuActivity.class));
                         break;
                     case 1: // Sua Tuoi
                         Intent suatuoi = new Intent(getApplicationContext(), PhanLoaiActivity.class);

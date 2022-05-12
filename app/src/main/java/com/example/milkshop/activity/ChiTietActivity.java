@@ -67,7 +67,7 @@ public class ChiTietActivity extends AppCompatActivity {
         mota.setText(sanPham.getMota().trim());
         Glide.with(getApplicationContext()).load(sanPham.getHinhanh()).into(imgHinhAnh);
         DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
-        String price = decimalFormat.format(Double.parseDouble(sanPham.getGiasp())) + "đ";
+        String price = decimalFormat.format(Double.parseDouble(sanPham.getGiasp())) + "₫";
         giasp.setText(price);
         Integer[] itemSpinner = new Integer[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
         ArrayAdapter<Integer> spinnerAdapter = new ArrayAdapter<>(

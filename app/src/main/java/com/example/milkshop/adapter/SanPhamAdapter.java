@@ -45,7 +45,7 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.MyViewHo
         SanPham sanPham = array.get(position);
         holder.txtTen.setText(sanPham.getTensp());
         DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
-        String price = decimalFormat.format(Double.parseDouble(sanPham.getGiasp())) + "đ";
+        String price = decimalFormat.format(Double.parseDouble(sanPham.getGiasp())) + "₫";
         holder.txtGia.setText(price);
         Glide.with(context).load(sanPham.getHinhanh()).into(holder.imgHinhAnh);
 

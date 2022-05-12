@@ -7,18 +7,22 @@
         <entry key="..\:/IT/LTDD/BTL/Milk-Shop/app/src/main/res/layout/activity_main.xml" value="0.2708333333333333" />
         <entry key="..\:/IT/LTDD/BTL/Milk-Shop/app/src/main/res/layout/item_sanpham.xml" value="0.2708333333333333" />
         <entry key="..\:/ITStudy/mobileDev/bigproject/source/Milk-Shop/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1215" />
+        <entry key="..\:/ITStudy/mobileDev/bigproject/source/Milk-Shop/app/src/main/res/drawable/card_edge.xml" value="0.1" />
+        <entry key="..\:/ITStudy/mobileDev/bigproject/source/Milk-Shop/app/src/main/res/drawable/half_right_rounded.xml" value="0.1355" />
         <entry key="..\:/ITStudy/mobileDev/bigproject/source/Milk-Shop/app/src/main/res/drawable/ic_baseline_add_circle_24.xml" value="0.1505" />
         <entry key="..\:/ITStudy/mobileDev/bigproject/source/Milk-Shop/app/src/main/res/drawable/ic_cart.xml" value="0.1215" />
         <entry key="..\:/ITStudy/mobileDev/bigproject/source/Milk-Shop/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1215" />
         <entry key="..\:/ITStudy/mobileDev/bigproject/source/Milk-Shop/app/src/main/res/drawable/ic_media_24.xml" value="0.1215" />
         <entry key="..\:/ITStudy/mobileDev/bigproject/source/Milk-Shop/app/src/main/res/drawable/spinner.xml" value="0.1215" />
-        <entry key="..\:/ITStudy/mobileDev/bigproject/source/Milk-Shop/app/src/main/res/layout/activity_chi_tiet.xml" value="0.4466666666666667" />
+        <entry key="..\:/ITStudy/mobileDev/bigproject/source/Milk-Shop/app/src/main/res/layout/activity_chi_tiet.xml" value="0.18241042345276873" />
+        <entry key="..\:/ITStudy/mobileDev/bigproject/source/Milk-Shop/app/src/main/res/layout/activity_gio_hang.xml" value="0.22826086956521738" />
         <entry key="..\:/ITStudy/mobileDev/bigproject/source/Milk-Shop/app/src/main/res/layout/activity_main.xml" value="0.22826086956521738" />
         <entry key="..\:/ITStudy/mobileDev/bigproject/source/Milk-Shop/app/src/main/res/layout/activity_sua_bot.xml" value="0.11041666666666666" />
         <entry key="..\:/ITStudy/mobileDev/bigproject/source/Milk-Shop/app/src/main/res/layout/activity_sua_dac.xml" value="0.16666666666666666" />
         <entry key="..\:/ITStudy/mobileDev/bigproject/source/Milk-Shop/app/src/main/res/layout/activity_sua_tuoi.xml" value="0.22826086956521738" />
         <entry key="..\:/ITStudy/mobileDev/bigproject/source/Milk-Shop/app/src/main/res/layout/item_category.xml" value="0.3333333333333333" />
-        <entry key="..\:/ITStudy/mobileDev/bigproject/source/Milk-Shop/app/src/main/res/layout/item_loading.xml" value="0.22826086956521738" />
+        <entry key="..\:/ITStudy/mobileDev/bigproject/source/Milk-Shop/app/src/main/res/layout/item_giohang.xml" value="0.22" />
+        <entry key="..\:/ITStudy/mobileDev/bigproject/source/Milk-Shop/app/src/main/res/layout/item_loading.xml" value="0.3333333333333333" />
         <entry key="..\:/ITStudy/mobileDev/bigproject/source/Milk-Shop/app/src/main/res/layout/item_phanloai.xml" value="0.3333333333333333" />
         <entry key="..\:/ITStudy/mobileDev/bigproject/source/Milk-Shop/app/src/main/res/layout/item_sanpham.xml" value="0.22" />
         <entry key="..\:/ITStudy/mobileDev/bigproject/source/Milk-Shop/app/src/main/res/layout/item_sp.xml" value="0.3333333333333333" />

@@ -12,7 +12,7 @@
         android:layout_height="?attr/actionBarSize"
         android:background="#A8DCE3"
         app:layout_constraintTop_toTopOf="parent"
-        app:title="Sữa bột"
+        app:title="Sữa Bột"
         tools:context=".activity.PhanLoaiActivity" />
 
     <androidx.recyclerview.widget.RecyclerView

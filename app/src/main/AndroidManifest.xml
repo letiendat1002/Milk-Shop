@@ -16,13 +16,16 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
         <activity
+            android:name=".activity.GioHangActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.ChiTietActivity"
             android:exported="false" />
         <activity
             android:name=".activity.PhanLoaiActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.MainActivity"
+            android:name=".activity.TrangChuActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

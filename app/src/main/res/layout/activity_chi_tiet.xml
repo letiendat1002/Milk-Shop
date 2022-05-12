@@ -13,7 +13,7 @@
         android:layout_height="?attr/actionBarSize"
         android:background="@color/primary_blue"
         app:layout_constraintTop_toTopOf="parent"
-        app:title="Chi tiết sản phẩm">
+        app:title="Chi Tiết Sản Phẩm">
 
         <FrameLayout
             android:layout_width="55dp"
@@ -57,7 +57,6 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginStart="5dp"
             android:gravity="center|start"
             android:orientation="vertical">
 
@@ -102,7 +101,8 @@
                 android:layout_marginEnd="15dp"
                 android:backgroundTint="@color/dark_blue"
                 android:text="@string/them_vao_gio_hang"
-                android:textColor="#000000" />
+                android:textColor="#000000"
+                android:textSize="15sp" />
 
         </LinearLayout>
     </LinearLayout>
@@ -138,7 +138,7 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginEnd="10dp"
                 android:textColor="@color/black"
-                android:textSize="15sp" />
+                android:textSize="18sp" />
         </LinearLayout>
     </ScrollView>
 

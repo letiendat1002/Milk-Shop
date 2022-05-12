@@ -59,7 +59,7 @@ public class PhanLoaiAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
             SanPham sanPham = array.get(position);
             myViewHolder.tensp.setText(sanPham.getTensp().trim());
             DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
-            String price = decimalFormat.format(Double.parseDouble(sanPham.getGiasp())) + "đ";
+            String price = decimalFormat.format(Double.parseDouble(sanPham.getGiasp())) + "₫";
             myViewHolder.giasp.setText(price);
             myViewHolder.mota.setText(sanPham.getMota().trim());
             Glide.with(context).load(sanPham.getHinhanh()).into(myViewHolder.hinhanh);

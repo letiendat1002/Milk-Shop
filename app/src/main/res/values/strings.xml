@@ -3,9 +3,13 @@
     <string name="imageview">imageview</string>
     <string name="ten_san_pham">Ten san pham</string>
     <string name="product_image_content">product image</string>
-    <string name="gia_text">100000d</string>
+    <string name="gia_text">100,000 ₫</string>
     <string name="add_image_content">Add image</string>
-    <string name="product_text">Sản phẩm</string>
+    <string name="product_text">Sản Phẩm</string>
     <string name="mota_text">Mô tả chi tiết</string>
-    <string name="them_vao_gio_hang">Thêm vào giỏ hàng</string>
+    <string name="them_vao_gio_hang">Thêm Vào Giỏ Hàng</string>
+    <string name="no_product_in_cart">Bạn chưa có sản phẩm nào trong giỏ hàng</string>
+    <string name="mua_hang_text">Mua Hàng</string>
+    <string name="tong_cong_text">Tổng cộng</string>
+    <string name="so_luong">1</string>
 </resources>
