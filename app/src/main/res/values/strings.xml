@@ -3,7 +3,7 @@
     <string name="imageview">imageview</string>
     <string name="ten_san_pham">Ten san pham</string>
     <string name="product_image_content">product image</string>
-    <string name="gia_text">100,000 ₫</string>
+    <string name="gia_text">100,000₫</string>
     <string name="add_image_content">Add image</string>
     <string name="product_text">Sản Phẩm</string>
     <string name="mota_text">Mô tả chi tiết</string>
@@ -15,4 +15,14 @@
     <string name="yes">Đồng ý</string>
     <string name="no">Không</string>
     <string name="delete_product_confirm">Bạn chắc chắn muốn bỏ sản phẩm này?</string>
+    <string name="mua_hang_text">Mua hàng</string>
+    <string name="tong_thanh_toan_text">Tổng thanh toán</string>
+    <string name="tong_thanh_toan">Tổng thanh toán</string>
+    <string name="phi_van_chuyen">Tổng phí vận chuyển</string>
+    <string name="tong_tien_hang">Tổng tiền hàng</string>
+    <string name="chi_phi">Chi phí</string>
+    <string name="don_hang">Đơn hàng</string>
+    <string name="note_cho_tai_xe">Note cho tài xế</string>
+    <string name="dia_chi_nhan_hang">Địa chỉ nhận hàng</string>
+    <string name="giao_hang_toi">Giao hàng tới</string>
 </resources>
