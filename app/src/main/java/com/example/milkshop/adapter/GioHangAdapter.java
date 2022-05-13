@@ -53,8 +53,8 @@ public class GioHangAdapter extends RecyclerView.Adapter<GioHangAdapter.MyViewHo
         GioHang gioHang = gioHangList.get(position);
         holder.tensp.setText(gioHang.getTensp().trim());
         DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
-        String price = decimalFormat.format(gioHang.getGiasp()) + "₫";
-        holder.giasp.setText(price);
+        String formattedPrice = decimalFormat.format(gioHang.getGiasp()) + "₫";
+        holder.giasp.setText(formattedPrice);
         String soluong = gioHang.getSoluong() + "";
         holder.soluong.setText(soluong);
         Glide.with(context).load(gioHang.getHinhanh()).into(holder.hinhanh);
@@ -67,8 +67,10 @@ public class GioHangAdapter extends RecyclerView.Adapter<GioHangAdapter.MyViewHo
                         gioHangList.get(pos).setSoluong(soluongmoi);
                         String amount = gioHangList.get(pos).getSoluong() + "";
                         holder.soluong.setText(amount);
+
                         long gia = gioHangList.get(pos).getSoluong() * gioHangList.get(pos).getGiasp();
-                        holder.giasp.setText(decimalFormat.format(gia));
+                        String formattedPrice = decimalFormat.format(gia) + "₫";
+                        holder.giasp.setText(formattedPrice);
                         EventBus.getDefault().postSticky(new TinhTongEvent());
                     }
                     else if (gioHangList.get(pos).getSoluong() == 1){
@@ -76,14 +78,16 @@ public class GioHangAdapter extends RecyclerView.Adapter<GioHangAdapter.MyViewHo
                     }
                 }
                 else if (value == ADD){
-                    if (gioHangList.get(pos).getSoluong()>=0){
-                        int soluongmoi = gioHangList.get(pos).getSoluong()+1;
+                    if (gioHangList.get(pos).getSoluong() >= 0){
+                        int soluongmoi = gioHangList.get(pos).getSoluong() + 1;
                         gioHangList.get(pos).setSoluong(soluongmoi);
                     }
                     String amount = gioHangList.get(pos).getSoluong() + "";
                     holder.soluong.setText(amount);
+
                     long gia = gioHangList.get(pos).getSoluong() * gioHangList.get(pos).getGiasp();
-                    holder.giasp.setText(decimalFormat.format(gia));
+                    String formattedPrice = decimalFormat.format(gia) + "₫";
+                    holder.giasp.setText(formattedPrice);
                     EventBus.getDefault().postSticky(new TinhTongEvent());
                 }
             }

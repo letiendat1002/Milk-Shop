@@ -35,11 +35,19 @@
         app:layout_constraintBottom_toTopOf="@id/framelayout"
         app:layout_constraintTop_toBottomOf="@id/toolbar_giohang" />
 
+    <View
+        android:id="@+id/seperateView1"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/framelayout"
+        android:background="@android:color/darker_gray"/>
+
     <FrameLayout
         android:id="@+id/framelayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp"
+        android:padding="7dp"
         app:layout_constraintBottom_toBottomOf="parent">
 
         <LinearLayout
@@ -66,13 +74,13 @@
         </LinearLayout>
 
         <Button
-            android:id="@+id/btnMuaHang_giohang"
+            android:id="@+id/btnDatHang_giohang"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end|center_vertical"
             android:backgroundTint="@color/dark_blue"
             android:textColor="@color/black"
-            android:text="@string/mua_hang_text"
+            android:text="@string/dat_hang_text"
             android:textAllCaps="false"
             android:textSize="20sp" />
     </FrameLayout>

@@ -27,7 +27,7 @@ public class GioHangActivity extends AppCompatActivity {
     TextView emptyCart, tvTongTienGioHang;
     Toolbar toolbarGioHang;
     RecyclerView recyclerViewGioHang;
-    Button btnMuaHangGioHang;
+    Button btnDatHangGioHang;
     GioHangAdapter gioHangAdapter;
 
     @Override
@@ -44,7 +44,7 @@ public class GioHangActivity extends AppCompatActivity {
         tvTongTienGioHang = findViewById(R.id.tvTongTien_giohang);
         toolbarGioHang = findViewById(R.id.toolbar_giohang);
         recyclerViewGioHang = findViewById(R.id.recyclerview_giohang);
-        btnMuaHangGioHang = findViewById(R.id.btnMuaHang_giohang);
+        btnDatHangGioHang = findViewById(R.id.btnDatHang_giohang);
 
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerViewGioHang.setLayoutManager(layoutManager);
@@ -70,7 +70,8 @@ public class GioHangActivity extends AppCompatActivity {
             tongtiensp += (Utils.gioHangList.get(i).getGiasp() * Utils.gioHangList.get(i).getSoluong());
         }
         DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
-        tvTongTienGioHang.setText(decimalFormat.format(tongtiensp));
+        String formattedPrice = decimalFormat.format(tongtiensp) + "₫";
+        tvTongTienGioHang.setText(formattedPrice);
 
     }
 
