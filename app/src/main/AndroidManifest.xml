@@ -33,6 +33,9 @@
         <activity
             android:name=".activity.SpTheoLoaiActivity"
             android:exported="false" />
+        <activity
+            android:name=".activity.ThanhToanActivity"
+            android:exported="false" />
     </application>
 
 </manifest>
