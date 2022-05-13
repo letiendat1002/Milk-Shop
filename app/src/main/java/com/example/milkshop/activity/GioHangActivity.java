@@ -3,6 +3,7 @@ package com.example.milkshop.activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -24,7 +25,8 @@ import java.text.DecimalFormat;
 import java.util.Objects;
 
 public class GioHangActivity extends AppCompatActivity {
-    TextView emptyCart, tvTongTienGioHang;
+    TextView tvEmptyCartGioHang, tvTongTienGioHang;
+    ImageView ivEmptyCartGioHang;
     Toolbar toolbarGioHang;
     RecyclerView recyclerViewGioHang;
     Button btnDatHangGioHang;
@@ -40,8 +42,9 @@ public class GioHangActivity extends AppCompatActivity {
     }
 
     private void addControls() {
-        emptyCart = findViewById(R.id.emptyCart_giohang);
+        tvEmptyCartGioHang = findViewById(R.id.tvEmptyCart_giohang);
         tvTongTienGioHang = findViewById(R.id.tvTongTien_giohang);
+        ivEmptyCartGioHang = findViewById(R.id.ivEmptyCart_giohang);
         toolbarGioHang = findViewById(R.id.toolbar_giohang);
         recyclerViewGioHang = findViewById(R.id.recyclerview_giohang);
         btnDatHangGioHang = findViewById(R.id.btnDatHang_giohang);
@@ -51,8 +54,11 @@ public class GioHangActivity extends AppCompatActivity {
         recyclerViewGioHang.setHasFixedSize(true);
 
         if (Utils.gioHangList.size() == 0) {
-            emptyCart.setVisibility(View.VISIBLE);
+            ivEmptyCartGioHang.setVisibility(View.VISIBLE);
+            tvEmptyCartGioHang.setVisibility(View.VISIBLE);
         } else {
+            ivEmptyCartGioHang.setVisibility(View.GONE);
+            tvTongTienGioHang.setVisibility(View.GONE);
             gioHangAdapter = new GioHangAdapter(getApplicationContext(), Utils.gioHangList);
             recyclerViewGioHang.setAdapter(gioHangAdapter);
         }
@@ -76,7 +82,8 @@ public class GioHangActivity extends AppCompatActivity {
     }
 
     private void setEmptyCart() {
-        emptyCart.setVisibility(View.VISIBLE);
+        ivEmptyCartGioHang.setVisibility(View.VISIBLE);
+        tvEmptyCartGioHang.setVisibility(View.VISIBLE);
     }
 
     @Override

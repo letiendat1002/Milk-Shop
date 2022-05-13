@@ -6,7 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -27,10 +26,10 @@ import java.text.DecimalFormat;
 import java.util.List;
 
 public class GioHangAdapter extends RecyclerView.Adapter<GioHangAdapter.MyViewHolder> {
-    Context context;
-    List<GioHang> gioHangList;
     private static final int SUBTRACT = 1;
     private static final int ADD = 2;
+    Context context;
+    List<GioHang> gioHangList;
 
     public GioHangAdapter(Context context, List<GioHang> array) {
         this.context = context;
@@ -61,8 +60,8 @@ public class GioHangAdapter extends RecyclerView.Adapter<GioHangAdapter.MyViewHo
         holder.setListener(new ImageClickListener() {
             @Override
             public void onImageClick(View view, int pos, int value) {
-                if (value == SUBTRACT){
-                    if (gioHangList.get(pos).getSoluong() > 1){
+                if (value == SUBTRACT) {
+                    if (gioHangList.get(pos).getSoluong() > 1) {
                         int soluongmoi = gioHangList.get(pos).getSoluong() - 1;
                         gioHangList.get(pos).setSoluong(soluongmoi);
                         String amount = gioHangList.get(pos).getSoluong() + "";
@@ -72,13 +71,11 @@ public class GioHangAdapter extends RecyclerView.Adapter<GioHangAdapter.MyViewHo
                         String formattedPrice = decimalFormat.format(gia) + "₫";
                         holder.giasp.setText(formattedPrice);
                         EventBus.getDefault().postSticky(new TinhTongEvent());
-                    }
-                    else if (gioHangList.get(pos).getSoluong() == 1){
+                    } else if (gioHangList.get(pos).getSoluong() == 1) {
                         createDeleteConfirmDialog(view, pos);
                     }
-                }
-                else if (value == ADD){
-                    if (gioHangList.get(pos).getSoluong() >= 0){
+                } else if (value == ADD) {
+                    if (gioHangList.get(pos).getSoluong() >= 0) {
                         int soluongmoi = gioHangList.get(pos).getSoluong() + 1;
                         gioHangList.get(pos).setSoluong(soluongmoi);
                     }
@@ -134,6 +131,7 @@ public class GioHangAdapter extends RecyclerView.Adapter<GioHangAdapter.MyViewHo
         ImageView hinhanh, imgtru, imgcong;
         TextView tensp, giasp, soluong;
         ImageClickListener listener;
+
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             hinhanh = itemView.findViewById(R.id.item_giohang_hinhanh);
@@ -153,10 +151,10 @@ public class GioHangAdapter extends RecyclerView.Adapter<GioHangAdapter.MyViewHo
 
         @Override
         public void onClick(View view) {
-            if (view == imgtru){
-                listener.onImageClick(view, getAdapterPosition(),SUBTRACT);
-            }else if (view == imgcong){
-                listener.onImageClick(view, getAdapterPosition(),ADD);
+            if (view == imgtru) {
+                listener.onImageClick(view, getAdapterPosition(), SUBTRACT);
+            } else if (view == imgcong) {
+                listener.onImageClick(view, getAdapterPosition(), ADD);
             }
         }
     }
