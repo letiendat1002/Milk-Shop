@@ -20,7 +20,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="5dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="10dp"
         android:layout_marginRight="5dp"
         android:elevation="8dp"
         app:layout_constraintTop_toBottomOf="@+id/toolbar_giohang">
@@ -46,7 +46,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
                     android:text="Tổng tiền :"
-                    android:textSize="15sp"
+                    android:textSize="20sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -55,7 +55,7 @@
                     android:layout_marginLeft="5dp"
                     android:text="25.0000"
                     android:textColor="@color/holo_red"
-                    android:textSize="15sp"
+                    android:textSize="20sp"
                     android:textStyle="bold" />
             </LinearLayout>
 
@@ -81,7 +81,7 @@
                     android:layout_height="wrap_content"
                     android:text="Số điện thoại :"
                     android:layout_marginLeft="5dp"
-                    android:textSize="15sp"
+                    android:textSize="20sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -90,7 +90,7 @@
                     android:text="0123456789"
                     android:layout_marginLeft="5dp"
                     android:textColor="@color/holo_red"
-                    android:textSize="15sp"
+                    android:textSize="20sp"
                     android:textStyle="bold" />
             </LinearLayout>
 
@@ -143,9 +143,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@+id/cart_info"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
         style="@style/Widget.Material3.TextInputLayout.OutlinedBox">
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
@@ -161,6 +161,7 @@
 
     <androidx.appcompat.widget.AppCompatButton
         app:layout_constraintBottom_toBottomOf="parent"
+        app:cardCornerRadius="20dp"
         android:layout_marginBottom="15dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"

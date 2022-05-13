@@ -58,13 +58,9 @@ public class GioHangActivity extends AppCompatActivity {
             recyclerViewGioHang.setAdapter(gioHangAdapter);
         }
 
-        btnDatHangGioHang.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(),ThanhToanActivity.class);
-                        startActivity(intent);
-            }
-        });
+        btnDatHangGioHang.setOnClickListener(view -> startActivity(new Intent(
+                getApplicationContext(),
+                ThanhToanActivity.class)));
     }
 
     private void ActionToolBar() {
