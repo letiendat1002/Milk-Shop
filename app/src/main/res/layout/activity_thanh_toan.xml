@@ -174,11 +174,25 @@
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
+
+    <TextView
+        android:id="@+id/icon_address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/cart_info"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:padding="5dp"
+        android:text="Địa chỉ"
+        android:textStyle="bold"
+        android:textSize="25dp">
+
+    </TextView>
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/input_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/cart_info"
+            app:layout_constraintTop_toBottomOf="@+id/icon_address"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_marginTop="10dp"
