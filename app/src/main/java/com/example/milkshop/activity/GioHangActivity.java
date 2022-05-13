@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.milkshop.R;
 import com.example.milkshop.adapter.GioHangAdapter;
+import com.example.milkshop.model.EventBus.EmptyCartEvent;
 import com.example.milkshop.model.EventBus.TinhTongEvent;
 import com.example.milkshop.utils.Utils;
 
@@ -23,10 +24,10 @@ import java.text.DecimalFormat;
 import java.util.Objects;
 
 public class GioHangActivity extends AppCompatActivity {
-    TextView giohangtrong, tongtien;
-    Toolbar toolbar;
-    RecyclerView recyclerView;
-    Button btnMuaHang;
+    TextView emptyCart, tvTongTienGioHang;
+    Toolbar toolbarGioHang;
+    RecyclerView recyclerViewGioHang;
+    Button btnDatHangGioHang;
     GioHangAdapter gioHangAdapter;
 
     @Override
@@ -38,33 +39,44 @@ public class GioHangActivity extends AppCompatActivity {
         tinhTongTien();
     }
 
+    private void addControls() {
+        emptyCart = findViewById(R.id.emptyCart_giohang);
+        tvTongTienGioHang = findViewById(R.id.tvTongTien_giohang);
+        toolbarGioHang = findViewById(R.id.toolbar_giohang);
+        recyclerViewGioHang = findViewById(R.id.recyclerview_giohang);
+        btnDatHangGioHang = findViewById(R.id.btnDatHang_giohang);
+
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
+        recyclerViewGioHang.setLayoutManager(layoutManager);
+        recyclerViewGioHang.setHasFixedSize(true);
+
+        if (Utils.gioHangList.size() == 0) {
+            emptyCart.setVisibility(View.VISIBLE);
+        } else {
+            gioHangAdapter = new GioHangAdapter(getApplicationContext(), Utils.gioHangList);
+            recyclerViewGioHang.setAdapter(gioHangAdapter);
+        }
+    }
+
+    private void ActionToolBar() {
+        setSupportActionBar(toolbarGioHang);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+        toolbarGioHang.setNavigationOnClickListener(view -> finish());
+    }
+
     private void tinhTongTien() {
         long tongtiensp = 0;
-        for (int i = 0; i <Utils.gioHangList.size(); i++){
-            tongtiensp = tongtiensp+(Utils.gioHangList.get(i).getGiasp()*Utils.gioHangList.get(i).getSoluong());
+        for (int i = 0; i < Utils.gioHangList.size(); i++) {
+            tongtiensp += (Utils.gioHangList.get(i).getGiasp() * Utils.gioHangList.get(i).getSoluong());
         }
         DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
-        tongtien.setText(decimalFormat.format(tongtiensp));
+        String formattedPrice = decimalFormat.format(tongtiensp) + "₫";
+        tvTongTienGioHang.setText(formattedPrice);
 
     }
 
-    private void addControls() {
-        giohangtrong = findViewById(R.id.txtgiohangtrong);
-        tongtien = findViewById(R.id.txttongtien);
-        toolbar = findViewById(R.id.toolbar);
-        recyclerView = findViewById(R.id.recycleviewgiohang);
-        btnMuaHang = findViewById(R.id.btnmuahang);
-
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setHasFixedSize(true);
-
-        if (Utils.gioHangList.size() == 0) {
-            giohangtrong.setVisibility(View.VISIBLE);
-        } else {
-            gioHangAdapter = new GioHangAdapter(getApplicationContext(), Utils.gioHangList);
-            recyclerView.setAdapter(gioHangAdapter);
-        }
+    private void setEmptyCart() {
+        emptyCart.setVisibility(View.VISIBLE);
     }
 
     @Override
@@ -75,19 +87,19 @@ public class GioHangActivity extends AppCompatActivity {
 
     @Override
     protected void onStop() {
-        EventBus.getDefault().unregister(this);
         super.onStop();
+        EventBus.getDefault().unregister(this);
     }
 
     @Subscribe(sticky = true, threadMode = ThreadMode.MAIN)
-    public void eventTinhTien(TinhTongEvent event){
+    public void eventTinhTien(TinhTongEvent event) {
         if (event != null)
             tinhTongTien();
     }
 
-    private void ActionToolBar() {
-        setSupportActionBar(toolbar);
-        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
-        toolbar.setNavigationOnClickListener(view -> finish());
+    @Subscribe(sticky = true, threadMode = ThreadMode.MAIN)
+    public void eventEmptyCart(EmptyCartEvent event) {
+        if (event != null)
+            setEmptyCart();
     }
 }

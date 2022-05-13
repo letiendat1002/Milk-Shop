@@ -8,7 +8,7 @@
     tools:context=".activity.ChiTietActivity">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
+        android:id="@+id/toolbar_chitiet"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="@color/primary_blue"
@@ -16,14 +16,14 @@
         app:title="Chi Tiết Sản Phẩm">
 
         <FrameLayout
-            android:id="@+id/frame_icon_giohang"
+            android:id="@+id/frame_icon_giohang_chitiet"
             android:layout_width="55dp"
             android:layout_height="?attr/actionBarSize"
             android:layout_gravity="end"
             android:layout_marginEnd="10dp">
 
             <com.nex3z.notificationbadge.NotificationBadge
-                android:id="@+id/menu_sl"
+                android:id="@+id/badge_chitiet"
                 android:layout_width="28dp"
                 android:layout_height="28dp"
                 android:layout_gravity="top|end" />
@@ -44,7 +44,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:orientation="horizontal"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar">
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_chitiet">
 
         <ImageView
             android:id="@+id/ivHinhAnh_chitiet"
@@ -83,15 +83,78 @@
                 android:textSize="25sp"
                 android:textStyle="bold" />
 
-            <Spinner
-                android:id="@+id/spinner_chitiet"
-                android:layout_width="match_parent"
+            <!--layout_congtru_chitiet-->
+            <LinearLayout
+                android:id="@+id/layout_congtru_chitiet"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginEnd="10dp"
-                android:background="@drawable/spinner"
-                android:gravity="center" />
+                android:layout_marginTop="10dp"
+                android:orientation="vertical">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@android:color/darker_gray" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:background="@android:color/darker_gray" />
+
+                    <ImageView
+                        android:id="@+id/ivTru_chitiet"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:clickable="true"
+                        android:contentDescription="@string/add_image_content"
+                        android:focusable="true"
+                        android:src="@drawable/ic_baseline_remove_24" />
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:background="@android:color/darker_gray" />
+
+                    <TextView
+                        android:id="@+id/tvSoLuong_chitiet"
+                        android:layout_width="40dp"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="@string/so_luong"
+                        android:textColor="@color/black"
+                        android:textSize="18sp" />
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:background="@android:color/darker_gray" />
+
+                    <ImageView
+                        android:id="@+id/ivCong_chitiet"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:clickable="true"
+                        android:contentDescription="@string/add_image_content"
+                        android:focusable="true"
+                        android:src="@drawable/ic_baseline_add_24" />
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:background="@android:color/darker_gray" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@android:color/darker_gray" />
+            </LinearLayout>
 
             <Button
                 android:id="@+id/btnAddToCart_chitiet"

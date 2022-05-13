@@ -7,19 +7,19 @@
     tools:context=".activity.GioHangActivity">
 
     <TextView
-        android:id="@+id/txtgiohangtrong"
+        android:id="@+id/emptyCart_giohang"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:textColor="@color/black"
         android:text="@string/no_product_in_cart"
+        android:textColor="@color/black"
         android:textSize="18sp"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
+        android:id="@+id/toolbar_giohang"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="@color/primary_blue"
@@ -27,19 +27,27 @@
         app:title="Giỏ Hàng" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycleviewgiohang"
+        android:id="@+id/recyclerview_giohang"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_margin="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintBottom_toTopOf="@id/framelayout"
-        app:layout_constraintTop_toBottomOf="@id/toolbar" />
+        app:layout_constraintTop_toBottomOf="@id/toolbar_giohang" />
+
+    <View
+        android:id="@+id/seperateView1"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/framelayout" />
 
     <FrameLayout
         android:id="@+id/framelayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp"
+        android:padding="7dp"
         app:layout_constraintBottom_toBottomOf="parent">
 
         <LinearLayout
@@ -56,7 +64,7 @@
                 android:textSize="18sp" />
 
             <TextView
-                android:id="@+id/txttongtien"
+                android:id="@+id/tvTongTien_giohang"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/gia_text"
@@ -66,14 +74,14 @@
         </LinearLayout>
 
         <Button
-            android:id="@+id/btnmuahang"
+            android:id="@+id/btnDatHang_giohang"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end|center_vertical"
             android:backgroundTint="@color/dark_blue"
-            android:textColor="@color/black"
-            android:text="@string/mua_hang_text"
+            android:text="@string/dat_hang_text"
             android:textAllCaps="false"
+            android:textColor="@color/black"
             android:textSize="20sp" />
     </FrameLayout>
 

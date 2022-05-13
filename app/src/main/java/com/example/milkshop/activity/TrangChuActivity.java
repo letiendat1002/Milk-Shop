@@ -1,6 +1,5 @@
 package com.example.milkshop.activity;
 
-import android.app.Notification;
 import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
@@ -45,12 +44,12 @@ import io.reactivex.rxjava3.disposables.CompositeDisposable;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 
 public class TrangChuActivity extends AppCompatActivity {
-    Toolbar toolbar;
+    Toolbar toolbarHome;
     RecyclerView recyclerViewHome;
-    NavigationView navigationView;
+    NavigationView navigationViewHome;
     ListView listViewHome;
-    DrawerLayout drawerLayout;
-    ViewFlipper viewFlipper;
+    DrawerLayout drawerLayoutHome;
+    ViewFlipper viewFlipperHome;
     CompositeDisposable compositeDisposable;
     ApiBanHang apiBanHang;
     // Category
@@ -59,8 +58,8 @@ public class TrangChuActivity extends AppCompatActivity {
     // Product
     List<SanPham> sanPhamList;
     SanPhamAdapter sanPhamAdapter;
-    NotificationBadge badge;
-    FrameLayout frameLayout;
+    NotificationBadge badgeHome;
+    FrameLayout frameLayoutIconGioHangHome;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,51 +84,35 @@ public class TrangChuActivity extends AppCompatActivity {
     private void addControls() {
         compositeDisposable = new CompositeDisposable();
         apiBanHang = RetrofitClient.getInstance(Utils.BASE_URL).create(ApiBanHang.class);
-        toolbar = findViewById(R.id.toolbarhome);
+        toolbarHome = findViewById(R.id.toolbar_home);
 
-        recyclerViewHome = findViewById(R.id.recycleview);
+        recyclerViewHome = findViewById(R.id.recyclerview_home);
         RecyclerView.LayoutManager layoutManager = new GridLayoutManager(this, 2);
         recyclerViewHome.setLayoutManager(layoutManager);
         recyclerViewHome.setHasFixedSize(true);
 
-        navigationView = findViewById(R.id.navigationview);
-        listViewHome = findViewById(R.id.listviewhome);
-        drawerLayout = findViewById(R.id.drawerlayout);
-        badge = findViewById(R.id.menu_sl);
-        frameLayout = findViewById(R.id.frame_icon_giohang);
-        viewFlipper = findViewById(R.id.viewFlipper);
+        navigationViewHome = findViewById(R.id.navigationview_home);
+        listViewHome = findViewById(R.id.listview_home);
+        drawerLayoutHome = findViewById(R.id.drawerlayout_home);
+        viewFlipperHome = findViewById(R.id.viewFlipper_home);
 
         danhMucSpList = new ArrayList<>();
         sanPhamList = new ArrayList<>();
 
+        badgeHome = findViewById(R.id.badge_home);
+        frameLayoutIconGioHangHome = findViewById(R.id.frame_icon_giohang_home);
+
         if (Utils.gioHangList == null) {
             Utils.gioHangList = new ArrayList<>();
-        }
-        else {
+        } else {
             int totalItems = 0;
             for (int i = 0; i < Utils.gioHangList.size(); ++i) {
                 totalItems += Utils.gioHangList.get(i).getSoluong();
             }
-            badge.setText(String.valueOf(totalItems));
+            badgeHome.setText(String.valueOf(totalItems));
         }
-        frameLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent giohang = new Intent(getApplicationContext(),GioHangActivity.class);
-                startActivity(giohang);
-            }
-        });
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        int totalItems = 0;
-        for (int i = 0; i < Utils.gioHangList.size(); ++i) {
-            totalItems += Utils.gioHangList.get(i).getSoluong();
-        }
-        badge.setText(String.valueOf(totalItems));
-    }
 
     private void addEvents() {
         listViewHome.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -161,13 +144,18 @@ public class TrangChuActivity extends AppCompatActivity {
                 }
             }
         });
+
+        frameLayoutIconGioHangHome.setOnClickListener(view -> startActivity(new Intent(
+                getApplicationContext(),
+                GioHangActivity.class
+        )));
     }
 
     private void ActionBar() {
-        setSupportActionBar(toolbar);
+        setSupportActionBar(toolbarHome);
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
-        toolbar.setNavigationIcon(android.R.drawable.ic_menu_sort_by_size);
-        toolbar.setNavigationOnClickListener(view -> drawerLayout.openDrawer(GravityCompat.START));
+        toolbarHome.setNavigationIcon(android.R.drawable.ic_menu_sort_by_size);
+        toolbarHome.setNavigationOnClickListener(view -> drawerLayoutHome.openDrawer(GravityCompat.START));
     }
 
     // Kiem tra thiet bi co ket noi internet khong? Wifi + Mobile data
@@ -191,14 +179,14 @@ public class TrangChuActivity extends AppCompatActivity {
             ImageView imageView = new ImageView(getApplicationContext());
             Glide.with(getApplicationContext()).load(mangquangcao.get(i)).into(imageView);
             imageView.setScaleType(ImageView.ScaleType.FIT_XY);
-            viewFlipper.addView(imageView);
+            viewFlipperHome.addView(imageView);
         }
-        viewFlipper.setFlipInterval(5000);
-        viewFlipper.setAutoStart(true);
+        viewFlipperHome.setFlipInterval(5000);
+        viewFlipperHome.setAutoStart(true);
         Animation slide_in = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.slide_in_right);
         Animation slide_out = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.slide_out_right);
-        viewFlipper.setInAnimation(slide_in);
-        viewFlipper.setOutAnimation(slide_out);
+        viewFlipperHome.setInAnimation(slide_in);
+        viewFlipperHome.setOutAnimation(slide_out);
     }
 
     private void getDanhMucSanPham() {
@@ -242,14 +230,18 @@ public class TrangChuActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onDestroy() {
-        compositeDisposable.clear();
-        super.onDestroy();
+    protected void onResume() {
+        super.onResume();
+        int totalItems = 0;
+        for (int i = 0; i < Utils.gioHangList.size(); ++i) {
+            totalItems += Utils.gioHangList.get(i).getSoluong();
+        }
+        badgeHome.setText(String.valueOf(totalItems));
     }
 
     @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        finish();
+    protected void onDestroy() {
+        compositeDisposable.clear();
+        super.onDestroy();
     }
 }
