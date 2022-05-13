@@ -66,7 +66,7 @@ public class GioHangActivity extends AppCompatActivity {
 
     private void tinhTongTien() {
         long tongtiensp = 0;
-        for (int i = 0; i <Utils.gioHangList.size(); i++){
+        for (int i = 0; i < Utils.gioHangList.size(); i++) {
             tongtiensp += (Utils.gioHangList.get(i).getGiasp() * Utils.gioHangList.get(i).getSoluong());
         }
         DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
@@ -92,13 +92,13 @@ public class GioHangActivity extends AppCompatActivity {
     }
 
     @Subscribe(sticky = true, threadMode = ThreadMode.MAIN)
-    public void eventTinhTien(TinhTongEvent event){
+    public void eventTinhTien(TinhTongEvent event) {
         if (event != null)
             tinhTongTien();
     }
 
     @Subscribe(sticky = true, threadMode = ThreadMode.MAIN)
-    public void eventEmptyCart(EmptyCartEvent event){
+    public void eventEmptyCart(EmptyCartEvent event) {
         if (event != null)
             setEmptyCart();
     }

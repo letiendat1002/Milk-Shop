@@ -11,8 +11,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:textColor="@color/black"
         android:text="@string/no_product_in_cart"
+        android:textColor="@color/black"
         android:textSize="18sp"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -39,9 +39,9 @@
         android:id="@+id/seperateView1"
         android:layout_width="match_parent"
         android:layout_height="1dp"
+        android:background="@android:color/darker_gray"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/framelayout"
-        android:background="@android:color/darker_gray"/>
+        app:layout_constraintBottom_toTopOf="@id/framelayout" />
 
     <FrameLayout
         android:id="@+id/framelayout"
@@ -79,9 +79,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="end|center_vertical"
             android:backgroundTint="@color/dark_blue"
-            android:textColor="@color/black"
             android:text="@string/dat_hang_text"
             android:textAllCaps="false"
+            android:textColor="@color/black"
             android:textSize="20sp" />
     </FrameLayout>
 

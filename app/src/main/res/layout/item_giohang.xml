@@ -61,7 +61,6 @@
                 android:layout_marginTop="10dp"
                 android:orientation="horizontal">
 
-
                 <ImageView
                     android:id="@+id/item_giohang_tru"
                     android:layout_width="wrap_content"
