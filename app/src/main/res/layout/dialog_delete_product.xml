@@ -7,9 +7,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:gravity="center_vertical"
-        android:paddingStart="17dp"
-        android:paddingEnd="0dp"
+        android:gravity="center"
         android:text="@string/delete_product_confirm"
         android:textSize="15sp" />
 

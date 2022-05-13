@@ -58,8 +58,6 @@ public class GioHangActivity extends AppCompatActivity {
             ivEmptyCartGioHang.setVisibility(View.VISIBLE);
             tvEmptyCartGioHang.setVisibility(View.VISIBLE);
         } else {
-            ivEmptyCartGioHang.setVisibility(View.GONE);
-            tvTongTienGioHang.setVisibility(View.GONE);
             gioHangAdapter = new GioHangAdapter(getApplicationContext(), Utils.gioHangList);
             recyclerViewGioHang.setAdapter(gioHangAdapter);
         }
@@ -111,7 +109,7 @@ public class GioHangActivity extends AppCompatActivity {
 
     @Subscribe(sticky = true, threadMode = ThreadMode.MAIN)
     public void eventEmptyCart(EmptyCartEvent event) {
-        if (event != null)
+        if (event != null && Utils.gioHangList.size() == 0)
             setEmptyCart();
     }
 }

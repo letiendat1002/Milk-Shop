@@ -71,7 +71,8 @@ public class GioHangAdapter extends RecyclerView.Adapter<GioHangAdapter.MyViewHo
                         String formattedPrice = decimalFormat.format(gia) + "₫";
                         holder.giasp.setText(formattedPrice);
                         EventBus.getDefault().postSticky(new TinhTongEvent());
-                    } else if (gioHangList.get(pos).getSoluong() == 1) {
+                    }
+                    else if (gioHangList.get(pos).getSoluong() == 1) {
                         createDeleteConfirmDialog(view, pos);
                     }
                 } else if (value == ADD) {
