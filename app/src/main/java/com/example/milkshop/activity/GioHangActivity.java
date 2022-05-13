@@ -1,5 +1,6 @@
 package com.example.milkshop.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -56,6 +57,14 @@ public class GioHangActivity extends AppCompatActivity {
             gioHangAdapter = new GioHangAdapter(getApplicationContext(), Utils.gioHangList);
             recyclerViewGioHang.setAdapter(gioHangAdapter);
         }
+
+        btnDatHangGioHang.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(),ThanhToanActivity.class);
+                        startActivity(intent);
+            }
+        });
     }
 
     private void ActionToolBar() {

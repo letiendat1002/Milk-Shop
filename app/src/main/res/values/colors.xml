@@ -10,5 +10,6 @@
     <color name="purple_price">#563085</color>
     <color name="dark_blue">#89abc6</color>
     <color name="primary_blue">#e3f2fd</color>
+    <color name="holo_red">#F40D42</color>
 
 </resources>
