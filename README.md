@@ -69,12 +69,13 @@ Milk Shop được lên ý tưởng dựa trên hai app là Tiki và Rino.
 
 ## III. HƯỚNG PHÁT TRIỂN TIẾP THEO
 
-- _Cải thiện thêm UX/UI, bổ sung content description ở các component như ImageView để tăng accessibility của ứng dụng._
+- _Cải thiện thêm UX/UI._
 - _Bổ sung số lượng tồn kho cho sản phẩm để giới hạn số lượng đặt hàng._
 - _Chức năng đăng nhập, đăng ký, quản lý tài khoản user._
 - _Lưu trữ thông tin giỏ hàng của từng user trong database._
 - _Quản lý thông tin giỏ hàng và quản lý đơn hàng của khách hàng._
 - _Tạo app quản lý riêng cho admin._
 - _Thông báo Notification ở app user, gửi nhận Notification giữa app quản lý và app user._
+- ...
 
 **[⬆ Lên đầu trang](#milk-shop)**
