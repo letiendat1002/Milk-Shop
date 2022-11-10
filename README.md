@@ -48,7 +48,7 @@ Milk Shop được lên ý tưởng dựa trên hai app là Tiki và Rino.
   
   <img width="30%" src="https://i.ibb.co/2cW2xyr/my-purchases.png" alt="My Purchases"/>
 
-## CÔNG NGHỆ VÀ THƯ VIỆN HỖ TRỢ
+## III. CÔNG NGHỆ VÀ THƯ VIỆN HỖ TRỢ
 
 ### Công nghệ sử dụng
 
@@ -67,7 +67,7 @@ Milk Shop được lên ý tưởng dựa trên hai app là Tiki và Rino.
 
 - **RxJava** : Hỗ trợ xử lý dữ liệu bất đồng bộ.
 
-## III. HƯỚNG PHÁT TRIỂN TIẾP THEO
+## IV. HƯỚNG PHÁT TRIỂN TIẾP THEO
 
 - _Cải thiện thêm UX/UI._
 - _Bổ sung số lượng tồn kho cho sản phẩm để giới hạn số lượng đặt hàng._
