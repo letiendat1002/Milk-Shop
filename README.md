@@ -24,29 +24,29 @@ Milk Shop được lên ý tưởng dựa trên hai app là Tiki và Rino.
 
 - _Màn hình loading khi vào ứng dụng_
 
-  <img width="20%" src="https://i.ibb.co/HqbZ8L9/loading.png" alt="Loading Screen"/>
+  <img width="30%" src="https://i.ibb.co/HqbZ8L9/loading.png" alt="Loading Screen"/>
 
 - _Giao diện trang chủ_
   
-  <img width="20%" src="https://i.ibb.co/SN81qpW/home-page.png" alt="Home Page"/>
+  <img width="30%" src="https://i.ibb.co/SN81qpW/home-page.png" alt="Home Page"/>
 
 - _Giao diện chi tiết sản phẩm_
   
-  <img width="20%" src="https://i.ibb.co/Dp1vfJ5/product.png" alt="Product Detail"/>
+  <img width="30%" src="https://i.ibb.co/Dp1vfJ5/product.png" alt="Product Detail"/>
 
 - _Giao diện giỏ hàng_
 
-  <img width="20%" src="https://i.ibb.co/VJt9XdF/shopping-cart.png" alt="Shopping Cart"/>
+  <img width="30%" src="https://i.ibb.co/VJt9XdF/shopping-cart.png" alt="Shopping Cart"/>
 
 - _Giao diện thanh toán_
   
-  <img width="20%" src="https://i.ibb.co/6866j4p/payment-1.png" alt="Payment 1"/> 
+  <img width="30%" src="https://i.ibb.co/6866j4p/payment-1.png" alt="Payment 1"/> 
   
-  <img width="20%" src="https://i.ibb.co/vY24Q8k/payment-2.png" alt="Payment 2"/>
+  <img width="30%" src="https://i.ibb.co/vY24Q8k/payment-2.png" alt="Payment 2"/>
 
 - _Giao diện xem đơn hàng_
   
-  <img width="20%" src="https://i.ibb.co/2cW2xyr/my-purchases.png" alt="My Purchases"/>
+  <img width="30%" src="https://i.ibb.co/2cW2xyr/my-purchases.png" alt="My Purchases"/>
 
 ## CÔNG NGHỆ VÀ THƯ VIỆN HỖ TRỢ
 
