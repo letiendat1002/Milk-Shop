@@ -16,7 +16,26 @@ Milk Shop được lên ý tưởng dựa trên hai app là Tiki và Rino.
 
 <p align="justify"> Milk Shop là sự kết hợp giữa các ý tưởng trên của cả hai app Rino và Tiki, một ứng dụng chuyên cung cấp các sản phẩm bơ sữa bởi một nhà phân phối duy nhất.</p>
 
-## II. GIAO DIỆN ỨNG DỤNG
+## II. CÔNG NGHỆ VÀ THƯ VIỆN HỖ TRỢ
+
+### Công nghệ sử dụng
+
+- **Ngôn ngữ:** Java, PHP, SQL
+- Sử dụng phpMyAdmin để quản trị MySQL Database ở localhost.
+
+### Thư viện hỗ trợ
+
+- **Glide** : Hỗ trợ load ảnh.
+
+- **Notification Badge** : Hiển thị thay đổi số lượng sản phẩm trong giỏ hàng.
+
+- **EventBus** : Hỗ trợ giao tiếp gửi nhận các components giữa các Activity, Fragment, … khác nhau.
+
+- **Retrofit** : Hỗ trợ giao thức HTTP để kết nối, lấy dữ liệu từ database về, convert dữ liệu từ dạng json thành java object, hoặc ngược lại.
+
+- **RxJava** : Hỗ trợ xử lý dữ liệu bất đồng bộ.
+
+## III. GIAO DIỆN ỨNG DỤNG
 
 - _Logo ứng dụng_
 
@@ -47,25 +66,6 @@ Milk Shop được lên ý tưởng dựa trên hai app là Tiki và Rino.
 - _Giao diện xem đơn hàng_
   
   <img width="30%" src="https://i.ibb.co/2cW2xyr/my-purchases.png" alt="My Purchases"/>
-
-## III. CÔNG NGHỆ VÀ THƯ VIỆN HỖ TRỢ
-
-### Công nghệ sử dụng
-
-- **Ngôn ngữ:** Java, PHP, SQL
-- Sử dụng phpMyAdmin để quản trị MySQL Database ở localhost.
-
-### Thư viện hỗ trợ
-
-- **Glide** : Hỗ trợ load ảnh.
-
-- **Notification Badge** : Hiển thị thay đổi số lượng sản phẩm trong giỏ hàng.
-
-- **EventBus** : Hỗ trợ giao tiếp gửi nhận các components giữa các Activity, Fragment, … khác nhau.
-
-- **Retrofit** : Hỗ trợ giao thức HTTP để kết nối, lấy dữ liệu từ database về, convert dữ liệu từ dạng json thành java object, hoặc ngược lại.
-
-- **RxJava** : Hỗ trợ xử lý dữ liệu bất đồng bộ.
 
 ## IV. HƯỚNG PHÁT TRIỂN TIẾP THEO
 
