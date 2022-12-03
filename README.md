@@ -43,7 +43,7 @@ Milk Shop được lên ý tưởng dựa trên hai app là Tiki và Rino.
 
 - _Màn hình loading khi vào ứng dụng_
 
-  <img width="30%" src="https://i.ibb.co/HqbZ8L9/loading.png" alt="Loading Screen"/>
+  <img width="30%" src="https://i.ibb.co/zP0SFnh/loading.jpg" alt="Loading Screen"/>
 
 - _Giao diện trang chủ_
   
